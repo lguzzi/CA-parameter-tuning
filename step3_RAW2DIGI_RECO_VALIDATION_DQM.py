@@ -9,6 +9,36 @@ from Configuration.Eras.Era_Run3_cff import Run3
 from Configuration.ProcessModifiers.pixelNtupletFit_cff import pixelNtupletFit
 from Configuration.ProcessModifiers.gpu_cff import gpu
 
+# import VarParsing
+from FWCore.ParameterSet.VarParsing import VarParsing
+
+# VarParsing instance
+options = VarParsing()
+
+# Custom options
+options.register ('CAThetaCutBarrel',
+              0.003,
+              VarParsing.multiplicity.singleton,
+              VarParsing.varType.float,
+              "CAThetaCutBarrel")
+options.register ('CAThetaCutForward',
+              0.004,
+              VarParsing.multiplicity.singleton,
+              VarParsing.varType.float,
+              "CAThetaCutForward")
+options.register ('dcaCutInnerTriplet',
+              0.16,
+              VarParsing.multiplicity.singleton,
+              VarParsing.varType.float,
+              "dcaCutInnerTriplet")
+options.register ('dcaCutOuterTriplet',
+              0.26,
+              VarParsing.multiplicity.singleton,
+              VarParsing.varType.float,
+              "dcaCutOuterTriplet")
+
+options.parseArguments()
+
 process = cms.Process('RECO',Run3,pixelNtupletFit,gpu)
 
 # import of standard configurations
@@ -26,10 +56,10 @@ process.load('Configuration.StandardSequences.Validation_cff')
 # process.load('DQMOffline.Configuration.DQMOfflineMC_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
-process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(0.003)
-process.pixelTracksCUDA.CAThetaCutForward = cms.double(0.004)
-process.pixelTracksCUDA.dcaCutInnerTriplet = cms.double(0.16)
-process.pixelTracksCUDA.dcaCutOuterTriplet = cms.double(0.26)
+process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(options.CAThetaCutBarrel)
+process.pixelTracksCUDA.CAThetaCutForward = cms.double(options.CAThetaCutForward)
+process.pixelTracksCUDA.dcaCutInnerTriplet = cms.double(options.dcaCutInnerTriplet)
+process.pixelTracksCUDA.dcaCutOuterTriplet = cms.double(options.dcaCutOuterTriplet)
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(100),
