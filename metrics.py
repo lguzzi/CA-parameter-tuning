@@ -9,7 +9,7 @@ dcaCutOuterTriplet = 0.26
 
 #process
 
-output = subprocess.run(['cmsRun','step3_RAW2DIGI_RECO_VALIDATION_DQM.py', 
+output = subprocess.run(['cmsRun','reconstruction', 
                 f'CAThetaCutBarrel={CAThetaCutBarrel}',
                 f'CAThetaCutForward={CAThetaCutForward}',
                 f'dcaCutInnerTriplet={dcaCutInnerTriplet}',
