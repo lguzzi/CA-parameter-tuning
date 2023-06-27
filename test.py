@@ -17,22 +17,28 @@ output = subprocess.run(['cmsRun','step3_RAW2DIGI_RECO_VALIDATION_DQM.py',
                 capture_output=True,
                 text=True)
 
-# ouputFile = open("output.txt", "w")
-# ouputFile.write(output.stderr)
-# ouputFile.close()
+ouputFile = open("output.txt", "w")
+ouputFile.write(output.stderr)
+ouputFile.close()
 
 outputLines = StringIO(output.stderr)
-totalRec=0
-totalAss=0
+totalRec = 0
+totalAss = 0
+totalFks = 0
 while line:=outputLines.readline():
-    if 'Collection' in line:
-        line = outputLines.readline()
-        line = outputLines.readline()
-        line = outputLines.readline()
+    if 'Total Reconstructed: ' in line:
+        # line = outputLines.readline()
+        # line = outputLines.readline()
+        # line = outputLines.readline()
         totalRec += int(line.split()[-1])
-        line = outputLines.readline()
+        # line = outputLines.readline()
+    if 'Total Associated' in line:    
         totalAss += int(line.split()[-1])
+    if 'Total Fakes:' in line:    
+        totalFks += int(line.split()[-1])
 
 efficiency = totalAss / totalRec
+fakeRate = totalFks / totalRec
 print(efficiency)
+print(fakeRate)
 
