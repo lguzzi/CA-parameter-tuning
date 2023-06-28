@@ -144,7 +144,7 @@ process.RandomNumberGeneratorService.restoreStateLabel=cms.untracked.string("ran
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '')
 process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
-process.FastTimerService.jsonFileName = cms.untracked.string('MYRESOURCES.json')
+process.FastTimerService.jsonFileName = cms.untracked.string('times.json')
 
 
 process.pixelTracksCUDA = cms.EDProducer("CAHitNtupletCUDAPhase1",
@@ -233,8 +233,9 @@ process.trackingParticlePixelTrackAsssociation = cms.EDProducer("TrackAssociator
 )
 
 process.pixelTracksTask = cms.Task(process.pixelTracks, process.pixelTracksCUDA, process.pixelTracksSoA)
-# process.tracksValidation = cms.Task(process.quickTrackAssociatorByHits, process.tpClusterProducer, process.trackingParticlePixelTrackAsssociation)
-process.tracksValidation = cms.Task(process.tpClusterProducer)
+process.tracksValidation = cms.Sequence(process.tpClusterProducer + process.quickTrackAssociatorByHits + process.trackingParticlePixelTrackAsssociation)
+# process.tracksValidation = cms.Sequence(process.tpClusterProducer)
+# process.tracksValidationSeq = cms.Sequence(process.tracksValidation)
 process.consumer = cms.EDAnalyzer("GenericConsumer", eventProducts = cms.untracked.vstring("tracksValidation"))
 
 process.pixel_tracks_step = cms.Path(process.pixelTracksTask)
