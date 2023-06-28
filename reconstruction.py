@@ -4,40 +4,41 @@
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
 # with command line options: step3 -s RAW2DIGI:RawToDigi_pixelOnly,RECO:reconstruction_pixelTrackingOnly,VALIDATION:@pixelTrackingOnlyValidation,DQM:@pixelTrackingOnlyDQM --conditions auto:phase1_2022_realistic --datatier GEN-SIM-RECO,DQMIO -n 100 --eventcontent RECOSIM,DQM --geometry DB:Extended --era Run3 --procModifiers pixelNtupletFit,gpu --filein file:step2.root --fileout file:step3.root --nThreads 8
 import FWCore.ParameterSet.Config as cms
+from csv import reader
 
 from Configuration.Eras.Era_Run3_cff import Run3
 from Configuration.ProcessModifiers.pixelNtupletFit_cff import pixelNtupletFit
 from Configuration.ProcessModifiers.gpu_cff import gpu
 
 # import VarParsing
-from FWCore.ParameterSet.VarParsing import VarParsing
+# from FWCore.ParameterSet.VarParsing import VarParsing
 
 # VarParsing instance
-options = VarParsing()
+# options = VarParsing()
 
 # Custom options
-options.register ('CAThetaCutBarrel',
-              0.003,
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "CAThetaCutBarrel")
-options.register ('CAThetaCutForward',
-              0.004,
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "CAThetaCutForward")
-options.register ('dcaCutInnerTriplet',
-              0.16,
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "dcaCutInnerTriplet")
-options.register ('dcaCutOuterTriplet',
-              0.26,
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "dcaCutOuterTriplet")
+# options.register ('CAThetaCutBarrel',
+#               0.003,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "CAThetaCutBarrel")
+# options.register ('CAThetaCutForward',
+#               0.004,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "CAThetaCutForward")
+# options.register ('dcaCutInnerTriplet',
+#               0.16,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "dcaCutInnerTriplet")
+# options.register ('dcaCutOuterTriplet',
+#               0.26,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "dcaCutOuterTriplet")
 
-options.parseArguments()
+# options.parseArguments()
 
 process = cms.Process('RECO',Run3,pixelNtupletFit,gpu)
 
@@ -52,15 +53,8 @@ process.load('Configuration.StandardSequences.MagneticField_cff')
 process.load('Configuration.StandardSequences.RawToDigi_cff')
 process.load('Configuration.StandardSequences.Reconstruction_cff')
 process.load('Configuration.StandardSequences.Validation_cff')
-# process.load('DQMServices.Core.DQMStoreNonLegacy_cff')
-# process.load('DQMOffline.Configuration.DQMOfflineMC_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load( "HLTrigger.Timer.FastTimerService_cfi" )
-
-process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(options.CAThetaCutBarrel)
-process.pixelTracksCUDA.CAThetaCutForward = cms.double(options.CAThetaCutForward)
-process.pixelTracksCUDA.dcaCutInnerTriplet = cms.double(options.dcaCutInnerTriplet)
-process.pixelTracksCUDA.dcaCutOuterTriplet = cms.double(options.dcaCutOuterTriplet)
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(100),
@@ -114,26 +108,6 @@ process.configurationMetadata = cms.untracked.PSet(
 
 # Output definition
 
-# process.RECOSIMoutput = cms.OutputModule("PoolOutputModule",
-#     dataset = cms.untracked.PSet(
-#         dataTier = cms.untracked.string('GEN-SIM-RECO'),
-#         filterName = cms.untracked.string('')
-#     ),
-#     fileName = cms.untracked.string('file:step3.root'),
-#     outputCommands = process.RECOSIMEventContent.outputCommands,
-#     splitLevel = cms.untracked.int32(0)
-# )
-
-# process.DQMoutput = cms.OutputModule("DQMRootOutputModule",
-#     dataset = cms.untracked.PSet(
-#         dataTier = cms.untracked.string('DQMIO'),
-#         filterName = cms.untracked.string('')
-#     ),
-#     fileName = cms.untracked.string('file:step3_inDQM.root'),
-#     outputCommands = process.DQMEventContent.outputCommands,
-#     splitLevel = cms.untracked.int32(0)
-# )
-
 # Additional output definition
 
 # Other statements
@@ -146,60 +120,72 @@ process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '
 process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
 process.FastTimerService.jsonFileName = cms.untracked.string('times.json')
 
+# Create multiple reconstruction and validation objects with parameters in parameters.csv
+totalTasks = 0
+with open("parameters.csv", "r") as f:
+    csv_reader = reader(f)
+    for i, row in enumerate(csv_reader):
+        totalTasks += 1
+        setattr(process, 'pixelTracksCUDA' + str(i), cms.EDProducer("CAHitNtupletCUDAPhase1",
+                CAThetaCutBarrel = cms.double(float(row[0])),
+                CAThetaCutForward = cms.double(float(row[1])),
+                dcaCutInnerTriplet = cms.double(float(row[2])),
+                dcaCutOuterTriplet = cms.double(float(row[3])),
+                doClusterCut = cms.bool(True),
+                doPtCut = cms.bool(True),
+                doSharedHitCut = cms.bool(True),
+                doZ0Cut = cms.bool(True),
+                dupPassThrough = cms.bool(False),
+                earlyFishbone = cms.bool(True),
+                fillStatistics = cms.bool(True),
+                fitNas4 = cms.bool(False),
+                hardCurvCut = cms.double(0.03284072249589491),
+                idealConditions = cms.bool(False),
+                includeJumpingForwardDoublets = cms.bool(True),
+                lateFishbone = cms.bool(False),
+                maxNumberOfDoublets = cms.uint32(524288),
+                mightGet = cms.optional.untracked.vstring,
+                minHitsForSharingCut = cms.uint32(10),
+                minHitsPerNtuplet = cms.uint32(3),
+                onGPU = cms.bool(True),
+                pixelRecHitSrc = cms.InputTag("siPixelRecHitsPreSplittingCUDA"),
+                ptmin = cms.double(0.8999999761581421),
+                trackQualityCuts = cms.PSet(
+                    chi2Coeff = cms.vdouble(0.9, 1.8),
+                    chi2MaxPt = cms.double(10),
+                    chi2Scale = cms.double(8),
+                    quadrupletMaxTip = cms.double(0.5),
+                    quadrupletMaxZip = cms.double(12),
+                    quadrupletMinPt = cms.double(0.3),
+                    tripletMaxTip = cms.double(0.3),
+                    tripletMaxZip = cms.double(12),
+                    tripletMinPt = cms.double(0.5)
+                ),
+                useRiemannFit = cms.bool(False),
+                useSimpleTripletCleaner = cms.bool(True)
+            )
+        )
+        setattr(process, "pixelTracksSoA" + str(i), cms.EDProducer("PixelTrackSoAFromCUDAPhase1",
+                mightGet = cms.optional.untracked.vstring,
+                src = cms.InputTag("pixelTracksCUDA" + str(i)))
+        )
+        setattr(process, "pixelTracks" + str(i), cms.EDProducer("PixelTrackProducerFromSoAPhase1",
+                beamSpot = cms.InputTag("offlineBeamSpot"),
+                mightGet = cms.optional.untracked.vstring,
+                minNumberOfHits = cms.int32(0),
+                minQuality = cms.string('loose'),
+                pixelRecHitLegacySrc = cms.InputTag("siPixelRecHitsPreSplitting"),
+                trackSrc = cms.InputTag("pixelTracksSoA" + str(i))
+            )
+        )
+        setattr(process, "simpleValidation" + str(i), cms.EDAnalyzer("SimpleValidation",
+                trackLabels = cms.VInputTag("pixelTracks" + str(i)),
+                trackAssociator = cms.untracked.InputTag("quickTrackAssociatorByHits"),
+                trackingParticles = cms.InputTag("mix", "MergedTrackTruth")               
+            )
+        )
 
-process.pixelTracksCUDA = cms.EDProducer("CAHitNtupletCUDAPhase1",
-    CAThetaCutBarrel = cms.double(0.0020000000949949026),
-    CAThetaCutForward = cms.double(0.003000000026077032),
-    dcaCutInnerTriplet = cms.double(0.15000000596046448),
-    dcaCutOuterTriplet = cms.double(0.25),
-    doClusterCut = cms.bool(True),
-    doPtCut = cms.bool(True),
-    doSharedHitCut = cms.bool(True),
-    doZ0Cut = cms.bool(True),
-    dupPassThrough = cms.bool(False),
-    earlyFishbone = cms.bool(True),
-    fillStatistics = cms.bool(False),
-    fitNas4 = cms.bool(False),
-    hardCurvCut = cms.double(0.03284072249589491),
-    idealConditions = cms.bool(False),
-    includeJumpingForwardDoublets = cms.bool(True),
-    lateFishbone = cms.bool(False),
-    maxNumberOfDoublets = cms.uint32(524288),
-    mightGet = cms.optional.untracked.vstring,
-    minHitsForSharingCut = cms.uint32(10),
-    minHitsPerNtuplet = cms.uint32(3),
-    onGPU = cms.bool(True),
-    pixelRecHitSrc = cms.InputTag("siPixelRecHitsPreSplittingCUDA"),
-    ptmin = cms.double(0.8999999761581421),
-    trackQualityCuts = cms.PSet(
-        chi2Coeff = cms.vdouble(0.9, 1.8),
-        chi2MaxPt = cms.double(10),
-        chi2Scale = cms.double(8),
-        quadrupletMaxTip = cms.double(0.5),
-        quadrupletMaxZip = cms.double(12),
-        quadrupletMinPt = cms.double(0.3),
-        tripletMaxTip = cms.double(0.3),
-        tripletMaxZip = cms.double(12),
-        tripletMinPt = cms.double(0.5)
-    ),
-    useRiemannFit = cms.bool(False),
-    useSimpleTripletCleaner = cms.bool(True)
-)
-
-process.pixelTracksSoA = cms.EDProducer("PixelTrackSoAFromCUDAPhase1",
-        mightGet = cms.optional.untracked.vstring,
-        src = cms.InputTag("pixelTracksCUDA")
-)
-
-process.pixelTracks = cms.EDProducer("PixelTrackProducerFromSoAPhase1",
-    beamSpot = cms.InputTag("offlineBeamSpot"),
-    mightGet = cms.optional.untracked.vstring,
-    minNumberOfHits = cms.int32(0),
-    minQuality = cms.string('loose'),
-    pixelRecHitLegacySrc = cms.InputTag("siPixelRecHitsPreSplitting"),
-    trackSrc = cms.InputTag("pixelTracksSoA")
-)
-
+# Prevalidation
 process.tpClusterProducer = cms.EDProducer("ClusterTPAssociationProducer",
     mightGet = cms.optional.untracked.vstring,
     phase2OTClusterSrc = cms.InputTag("siPhase2Clusters"),
@@ -225,52 +211,39 @@ process.quickTrackAssociatorByHits = cms.EDProducer("QuickTrackAssociatorByHitsP
     useClusterTPAssociation = cms.bool(True)
 )
 
-process.trackingParticlePixelTrackAsssociation = cms.EDProducer("TrackAssociatorEDProducer",
-    associator = cms.InputTag("quickTrackAssociatorByHits"),
-    ignoremissingtrackcollection = cms.untracked.bool(False),
-    label_tp = cms.InputTag("mix","MergedTrackTruth"),
-    label_tr = cms.InputTag("pixelTracks")
-)
+# Lists of tasks
+taskListCUDA = [getattr(process, 'pixelTracksCUDA'+str(i)) for i in range(totalTasks)]
+taskListSoA = [getattr(process, 'pixelTracksSoA'+str(i)) for i in range(totalTasks)]
+taskList = [getattr(process, 'pixelTracks'+str(i)) for i in range(totalTasks)]
+taskListVal = [getattr(process, 'simpleValidation'+str(i)) for i in range(totalTasks)]
 
-process.simpleValidation = cms.EDAnalyzer("SimpleValidation",
-    trackLabels = cms.VInputTag("pixelTracks"),
-    trackAssociator = cms.untracked.InputTag("quickTrackAssociatorByHits"),
-    trackingParticles = cms.InputTag("mix", "MergedTrackTruth")
-    
-)
-
-process.pixelTracksTask = cms.Task(process.pixelTracks, process.pixelTracksCUDA, process.pixelTracksSoA)
-process.tracksValidation = cms.Sequence(process.tpClusterProducer + process.quickTrackAssociatorByHits + process.trackingParticlePixelTrackAsssociation+process.simpleValidation)
-# process.tracksValidation = cms.Sequence(process.tpClusterProducer)
-# process.tracksValidationSeq = cms.Sequence(process.tracksValidation)
+# Tasks and sequences
+process.pixelTracksTask = cms.Task(*taskListCUDA, *taskListSoA, *taskList)
+process.pixelTracksSeq = cms.Sequence(process.pixelTracksTask)
+process.preValidation = cms.Sequence(process.tpClusterProducer + process.quickTrackAssociatorByHits)
+process.simpleValSeq = cms.Sequence(sum(taskListVal[1:],taskListVal[0]))
 process.consumer = cms.EDAnalyzer("GenericConsumer", eventProducts = cms.untracked.vstring("tracksValidation"))
 
-process.pixel_tracks_step = cms.Path(process.pixelTracksTask)
 
 # Path and EndPath definitions
 process.raw2digi_step = cms.Path(process.RawToDigi_pixelOnly)
 process.reconstruction_step = cms.Path(process.reconstruction_pixelTrackingOnly)
-process.validation_step = cms.Path(process.tracksValidation)
+process.pixel_tracks_step = cms.Path(process.pixelTracksTask)
+process.pre_validation_step = cms.Path(process.preValidation)
+process.validation_step = cms.Path(process.simpleValSeq)
 process.consume_step = cms.EndPath(process.consumer)
-# process.prevalidation_step = cms.Path(process.globalPrevalidationPixelTrackingOnly)
-# process.dqmoffline_step = cms.EndPath(process.DQMOfflinePixelTracking)
-# process.dqmofflineOnPAT_step = cms.EndPath(process.PostDQMOffline)
-# process.RECOSIMoutput_step = cms.EndPath(process.RECOSIMoutput)
-# process.DQMoutput_step = cms.EndPath(process.DQMoutput)
+
 
 # Schedule definition
 process.schedule = cms.Schedule(
     process.raw2digi_step,
     process.reconstruction_step,
     process.pixel_tracks_step,
+    process.pre_validation_step,
     process.validation_step,
     process.consume_step
-    # process.prevalidation_step,
-    # process.dqmoffline_step,
-    # process.dqmofflineOnPAT_step,
-    # process.RECOSIMoutput_step,
-    # process.DQMoutput_step
     )
+
 from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
 associatePatAlgosToolsTask(process)
 
