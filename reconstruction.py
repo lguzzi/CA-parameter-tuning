@@ -55,6 +55,7 @@ process.load('Configuration.StandardSequences.Validation_cff')
 # process.load('DQMServices.Core.DQMStoreNonLegacy_cff')
 # process.load('DQMOffline.Configuration.DQMOfflineMC_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
+process.load( "HLTrigger.Timer.FastTimerService_cfi" )
 
 process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(options.CAThetaCutBarrel)
 process.pixelTracksCUDA.CAThetaCutForward = cms.double(options.CAThetaCutForward)
@@ -142,12 +143,108 @@ for a in process.aliases: delattr(process, a)
 process.RandomNumberGeneratorService.restoreStateLabel=cms.untracked.string("randomEngineStateProducer")
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '')
+process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
+process.FastTimerService.jsonFileName = cms.untracked.string('MYRESOURCES.json')
+
+
+process.pixelTracksCUDA = cms.EDProducer("CAHitNtupletCUDAPhase1",
+    CAThetaCutBarrel = cms.double(0.0020000000949949026),
+    CAThetaCutForward = cms.double(0.003000000026077032),
+    dcaCutInnerTriplet = cms.double(0.15000000596046448),
+    dcaCutOuterTriplet = cms.double(0.25),
+    doClusterCut = cms.bool(True),
+    doPtCut = cms.bool(True),
+    doSharedHitCut = cms.bool(True),
+    doZ0Cut = cms.bool(True),
+    dupPassThrough = cms.bool(False),
+    earlyFishbone = cms.bool(True),
+    fillStatistics = cms.bool(False),
+    fitNas4 = cms.bool(False),
+    hardCurvCut = cms.double(0.03284072249589491),
+    idealConditions = cms.bool(False),
+    includeJumpingForwardDoublets = cms.bool(True),
+    lateFishbone = cms.bool(False),
+    maxNumberOfDoublets = cms.uint32(524288),
+    mightGet = cms.optional.untracked.vstring,
+    minHitsForSharingCut = cms.uint32(10),
+    minHitsPerNtuplet = cms.uint32(3),
+    onGPU = cms.bool(True),
+    pixelRecHitSrc = cms.InputTag("siPixelRecHitsPreSplittingCUDA"),
+    ptmin = cms.double(0.8999999761581421),
+    trackQualityCuts = cms.PSet(
+        chi2Coeff = cms.vdouble(0.9, 1.8),
+        chi2MaxPt = cms.double(10),
+        chi2Scale = cms.double(8),
+        quadrupletMaxTip = cms.double(0.5),
+        quadrupletMaxZip = cms.double(12),
+        quadrupletMinPt = cms.double(0.3),
+        tripletMaxTip = cms.double(0.3),
+        tripletMaxZip = cms.double(12),
+        tripletMinPt = cms.double(0.5)
+    ),
+    useRiemannFit = cms.bool(False),
+    useSimpleTripletCleaner = cms.bool(True)
+)
+
+process.pixelTracksSoA = cms.EDProducer("PixelTrackSoAFromCUDAPhase1",
+        mightGet = cms.optional.untracked.vstring,
+        src = cms.InputTag("pixelTracksCUDA")
+)
+
+process.pixelTracks = cms.EDProducer("PixelTrackProducerFromSoAPhase1",
+    beamSpot = cms.InputTag("offlineBeamSpot"),
+    mightGet = cms.optional.untracked.vstring,
+    minNumberOfHits = cms.int32(0),
+    minQuality = cms.string('loose'),
+    pixelRecHitLegacySrc = cms.InputTag("siPixelRecHitsPreSplitting"),
+    trackSrc = cms.InputTag("pixelTracksSoA")
+)
+
+process.tpClusterProducer = cms.EDProducer("ClusterTPAssociationProducer",
+    mightGet = cms.optional.untracked.vstring,
+    phase2OTClusterSrc = cms.InputTag("siPhase2Clusters"),
+    phase2OTSimLinkSrc = cms.InputTag("simSiPixelDigis","Tracker"),
+    pixelClusterSrc = cms.InputTag("hltSiPixelClusters"),
+    pixelSimLinkSrc = cms.InputTag("simSiPixelDigis"),
+    simTrackSrc = cms.InputTag("g4SimHits"),
+    stripClusterSrc = cms.InputTag("hltSiStripRawToClustersFacility"),
+    stripSimLinkSrc = cms.InputTag("simSiStripDigis"),
+    throwOnMissingCollections = cms.bool(True),
+    trackingParticleSrc = cms.InputTag("mix","MergedTrackTruth")
+)
+
+process.quickTrackAssociatorByHits = cms.EDProducer("QuickTrackAssociatorByHitsProducer",
+    AbsoluteNumberOfHits = cms.bool(False),
+    Cut_RecoToSim = cms.double(0.75),
+    PixelHitWeight = cms.double(1.0),
+    Purity_SimToReco = cms.double(0.75),
+    Quality_SimToReco = cms.double(0.5),
+    SimToRecoDenominator = cms.string('reco'),
+    ThreeHitTracksAreSpecial = cms.bool(True),
+    cluster2TPSrc = cms.InputTag("tpClusterProducer"),
+    useClusterTPAssociation = cms.bool(True)
+)
+
+process.trackingParticlePixelTrackAsssociation = cms.EDProducer("TrackAssociatorEDProducer",
+    associator = cms.InputTag("quickTrackAssociatorByHits"),
+    ignoremissingtrackcollection = cms.untracked.bool(False),
+    label_tp = cms.InputTag("mix","MergedTrackTruth"),
+    label_tr = cms.InputTag("pixelTracks")
+)
+
+process.pixelTracksTask = cms.Task(process.pixelTracks, process.pixelTracksCUDA, process.pixelTracksSoA)
+# process.tracksValidation = cms.Task(process.quickTrackAssociatorByHits, process.tpClusterProducer, process.trackingParticlePixelTrackAsssociation)
+process.tracksValidation = cms.Task(process.tpClusterProducer)
+process.consumer = cms.EDAnalyzer("GenericConsumer", eventProducts = cms.untracked.vstring("tracksValidation"))
+
+process.pixel_tracks_step = cms.Path(process.pixelTracksTask)
 
 # Path and EndPath definitions
 process.raw2digi_step = cms.Path(process.RawToDigi_pixelOnly)
 process.reconstruction_step = cms.Path(process.reconstruction_pixelTrackingOnly)
-process.prevalidation_step = cms.Path(process.globalPrevalidationPixelTrackingOnly)
-process.validation_step = cms.EndPath(process.globalValidationPixelTrackingOnly)
+process.validation_step = cms.Path(process.tracksValidation)
+process.consume_step = cms.EndPath(process.consumer)
+# process.prevalidation_step = cms.Path(process.globalPrevalidationPixelTrackingOnly)
 # process.dqmoffline_step = cms.EndPath(process.DQMOfflinePixelTracking)
 # process.dqmofflineOnPAT_step = cms.EndPath(process.PostDQMOffline)
 # process.RECOSIMoutput_step = cms.EndPath(process.RECOSIMoutput)
@@ -157,8 +254,10 @@ process.validation_step = cms.EndPath(process.globalValidationPixelTrackingOnly)
 process.schedule = cms.Schedule(
     process.raw2digi_step,
     process.reconstruction_step,
-    process.prevalidation_step,
+    process.pixel_tracks_step,
     process.validation_step,
+    process.consume_step
+    # process.prevalidation_step,
     # process.dqmoffline_step,
     # process.dqmofflineOnPAT_step,
     # process.RECOSIMoutput_step,
