@@ -204,7 +204,7 @@ process.tpClusterProducer = cms.EDProducer("ClusterTPAssociationProducer",
     mightGet = cms.optional.untracked.vstring,
     phase2OTClusterSrc = cms.InputTag("siPhase2Clusters"),
     phase2OTSimLinkSrc = cms.InputTag("simSiPixelDigis","Tracker"),
-    pixelClusterSrc = cms.InputTag("hltSiPixelClusters"),
+    pixelClusterSrc = cms.InputTag("siPixelClustersPreSplitting"),
     pixelSimLinkSrc = cms.InputTag("simSiPixelDigis"),
     simTrackSrc = cms.InputTag("g4SimHits"),
     stripClusterSrc = cms.InputTag("hltSiStripRawToClustersFacility"),
@@ -232,8 +232,15 @@ process.trackingParticlePixelTrackAsssociation = cms.EDProducer("TrackAssociator
     label_tr = cms.InputTag("pixelTracks")
 )
 
+process.simpleValidation = cms.EDAnalyzer("SimpleValidation",
+    trackLabels = cms.VInputTag("pixelTracks"),
+    trackAssociator = cms.untracked.InputTag("quickTrackAssociatorByHits"),
+    trackingParticles = cms.InputTag("mix", "MergedTrackTruth")
+    
+)
+
 process.pixelTracksTask = cms.Task(process.pixelTracks, process.pixelTracksCUDA, process.pixelTracksSoA)
-process.tracksValidation = cms.Sequence(process.tpClusterProducer + process.quickTrackAssociatorByHits + process.trackingParticlePixelTrackAsssociation)
+process.tracksValidation = cms.Sequence(process.tpClusterProducer + process.quickTrackAssociatorByHits + process.trackingParticlePixelTrackAsssociation+process.simpleValidation)
 # process.tracksValidation = cms.Sequence(process.tpClusterProducer)
 # process.tracksValidationSeq = cms.Sequence(process.tracksValidation)
 process.consumer = cms.EDAnalyzer("GenericConsumer", eventProducts = cms.untracked.vstring("tracksValidation"))
