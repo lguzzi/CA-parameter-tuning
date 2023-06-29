@@ -1,44 +1,36 @@
 import subprocess
 from io import StringIO
+import uproot
+import numpy as np
 
-
-CAThetaCutBarrel = 0.003
-CAThetaCutForward = 0.004
-dcaCutInnerTriplet = 0.16
-dcaCutOuterTriplet = 0.26
 
 #process
 
-output = subprocess.run(['cmsRun','reconstruction', 
-                f'CAThetaCutBarrel={CAThetaCutBarrel}',
-                f'CAThetaCutForward={CAThetaCutForward}',
-                f'dcaCutInnerTriplet={dcaCutInnerTriplet}',
-                f'dcaCutOuterTriplet={dcaCutOuterTriplet}'],
-                capture_output=True,
-                text=True)
+# subprocess.run(['cmsRun','reconstruction.py'])
 
-ouputFile = open("output.txt", "w")
-ouputFile.write(output.stderr)
-ouputFile.close()
 
-outputLines = StringIO(output.stderr)
-totalRec = 0
-totalAss = 0
-totalFks = 0
-while line:=outputLines.readline():
-    if 'Total Reconstructed: ' in line:
-        # line = outputLines.readline()
-        # line = outputLines.readline()
-        # line = outputLines.readline()
-        totalRec += int(line.split()[-1])
-        # line = outputLines.readline()
-    if 'Total Associated' in line:    
-        totalAss += int(line.split()[-1])
-    if 'Total Fakes:' in line:    
-        totalFks += int(line.split()[-1])
+# totalFks = 0
 
-efficiency = totalAss / totalRec
-fakeRate = totalFks / totalRec
-print(efficiency)
-print(fakeRate)
+numAgents = 5
+output = uproot.open('output.root')
+
+totalSim = np.zeros(5)
+totalRec = np.zeros(5)
+totalAss = np.zeros(5)
+for i in range(numAgents):
+    out = output['simpleValidation' + str(i)]['output']
+    totalRec[i] = out['rt'].array()[0]
+    totalAss[i] = out['at'].array()[0]
+    totalSim[i] = out['st'].array()[0]
+
+print(totalSim, totalAss, totalRec)
+print('Efficiency ')
+print(totalAss / totalSim)
+print('Fake rate ')
+print((totalRec - totalAss) / totalRec)
+
+
+
+
+
 
