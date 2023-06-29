@@ -10,18 +10,18 @@ from Configuration.Eras.Era_Run3_cff import Run3
 from Configuration.ProcessModifiers.pixelNtupletFit_cff import pixelNtupletFit
 from Configuration.ProcessModifiers.gpu_cff import gpu
 
-# import VarParsing
-# from FWCore.ParameterSet.VarParsing import VarParsing
+import VarParsing
+from FWCore.ParameterSet.VarParsing import VarParsing
 
 # VarParsing instance
-# options = VarParsing()
+options = VarParsing()
 
 # Custom options
-# options.register ('CAThetaCutBarrel',
-#               0.003,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "CAThetaCutBarrel")
+options.register ('outputFileName',
+              "output.root",
+              VarParsing.multiplicity.singleton,
+              VarParsing.varType.string,
+              "outputFileName")
 # options.register ('CAThetaCutForward',
 #               0.004,
 #               VarParsing.multiplicity.singleton,
@@ -38,7 +38,7 @@ from Configuration.ProcessModifiers.gpu_cff import gpu
 #               VarParsing.varType.float,
 #               "dcaCutOuterTriplet")
 
-# options.parseArguments()
+options.parseArguments()
 
 process = cms.Process('RECO',Run3,pixelNtupletFit,gpu)
 
@@ -119,6 +119,8 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '')
 process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
 process.FastTimerService.jsonFileName = cms.untracked.string('times.json')
+process.TFileService = cms.Service("TFileService", fileName = cms.string(options.outputFileName))
+
 
 # Create multiple reconstruction and validation objects with parameters in parameters.csv
 totalTasks = 0
