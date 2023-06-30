@@ -1,7 +1,8 @@
-*.root
-*.csv
-*.gif
-params
-output
+# *.root
+# *.csv
+# *.gif
+# params
+# output
 __pycache__
-gifs
+# gifs
+step2.root

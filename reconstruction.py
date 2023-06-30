@@ -181,6 +181,21 @@ with open("parameters.csv", "r") as f:
             )
         )
         setattr(process, "simpleValidation" + str(i), cms.EDAnalyzer("SimpleValidation",
+                chargedOnlyTP = cms.bool(True),
+                intimeOnlyTP = cms.bool(True),
+                invertRapidityCutTP = cms.bool(False),
+                lipTP = cms.double(20.0),
+                maxPhi = cms.double(3.2),
+                maxRapidityTP = cms.double(3),
+                minHitTP = cms.int32(2),
+                minPhi = cms.double(-3.2),
+                minRapidityTP = cms.double(-3),
+                pdgIdTP = cms.vint32(),
+                ptMaxTP = cms.double(1e+100),
+                ptMinTP = cms.double(0.2),
+                signalOnlyTP = cms.bool(False),
+                stableOnlyTP = cms.bool(False),
+                tipTP = cms.double(20),
                 trackLabels = cms.VInputTag("pixelTracks" + str(i)),
                 trackAssociator = cms.untracked.InputTag("quickTrackAssociatorByHits"),
                 trackingParticles = cms.InputTag("mix", "MergedTrackTruth")               
@@ -250,7 +265,7 @@ from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
 associatePatAlgosToolsTask(process)
 
 #Setup FWK for multithreaded
-process.options.numberOfThreads = 16
+process.options.numberOfThreads = 8
 process.options.numberOfStreams = 0
 
 # customisation of the process.

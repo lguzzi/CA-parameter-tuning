@@ -34,7 +34,7 @@ class Particle:
             totalAss = out['at'].array()[0]
             totalSim = out['st'].array()[0]
             
-        self.fitness = np.array([totalSim / totalAss, (totalRec - totalAss) / totalRec])
+        self.fitness = np.array([totalSim / (totalAss + 1), (totalRec - totalAss) / (totalRec + 1)])
         
         if any(self.fitness < self.best_fitness):
             self.best_fitness = self.fitness
