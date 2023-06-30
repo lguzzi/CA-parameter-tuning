@@ -10,7 +10,7 @@ from Configuration.Eras.Era_Run3_cff import Run3
 from Configuration.ProcessModifiers.pixelNtupletFit_cff import pixelNtupletFit
 from Configuration.ProcessModifiers.gpu_cff import gpu
 
-import VarParsing
+# import VarParsing
 from FWCore.ParameterSet.VarParsing import VarParsing
 
 # VarParsing instance
@@ -250,7 +250,7 @@ from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
 associatePatAlgosToolsTask(process)
 
 #Setup FWK for multithreaded
-process.options.numberOfThreads = 8
+process.options.numberOfThreads = 16
 process.options.numberOfStreams = 0
 
 # customisation of the process.

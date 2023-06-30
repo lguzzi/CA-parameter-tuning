@@ -3,10 +3,10 @@
     {
       "events": 100,
       "label": "source",
-      "mem_alloc": 334477,
-      "mem_free": 128615,
-      "time_real": 653.397918,
-      "time_thread": 651.696003,
+      "mem_alloc": 327007,
+      "mem_free": 120816,
+      "time_real": 920.981703,
+      "time_thread": 913.137341,
       "type": "PoolSource"
     },
     {
@@ -14,8 +14,8 @@
       "label": "TriggerResults",
       "mem_alloc": 29,
       "mem_free": 12,
-      "time_real": 0.266473,
-      "time_thread": 0.266282,
+      "time_real": 0.393496,
+      "time_thread": 0.387781,
       "type": "TriggerResultInserter"
     },
     {
@@ -23,8 +23,8 @@
       "label": "raw2digi_step",
       "mem_alloc": 20,
       "mem_free": 15,
-      "time_real": 0.64226,
-      "time_thread": 0.67609,
+      "time_real": 0.654421,
+      "time_thread": 0.678223,
       "type": "PathStatusInserter"
     },
     {
@@ -32,8 +32,8 @@
       "label": "reconstruction_step",
       "mem_alloc": 23,
       "mem_free": 18,
-      "time_real": 0.299214,
-      "time_thread": 0.298788,
+      "time_real": 0.311342,
+      "time_thread": 0.312639,
       "type": "PathStatusInserter"
     },
     {
@@ -41,8 +41,8 @@
       "label": "pixel_tracks_step",
       "mem_alloc": 23,
       "mem_free": 18,
-      "time_real": 0.227057,
-      "time_thread": 0.22511,
+      "time_real": 0.267017,
+      "time_thread": 0.266035,
       "type": "PathStatusInserter"
     },
     {
@@ -50,8 +50,8 @@
       "label": "pre_validation_step",
       "mem_alloc": 23,
       "mem_free": 21,
-      "time_real": 0.257465,
-      "time_thread": 0.25826,
+      "time_real": 0.352787,
+      "time_thread": 0.353814,
       "type": "PathStatusInserter"
     },
     {
@@ -59,8 +59,8 @@
       "label": "validation_step",
       "mem_alloc": 17,
       "mem_free": 14,
-      "time_real": 0.458243,
-      "time_thread": 0.469398,
+      "time_real": 0.567986,
+      "time_thread": 0.558186,
       "type": "PathStatusInserter"
     },
     {
@@ -68,8 +68,8 @@
       "label": "consume_step",
       "mem_alloc": 20,
       "mem_free": 14,
-      "time_real": 0.349281,
-      "time_thread": 0.346381,
+      "time_real": 0.54404,
+      "time_thread": 0.54574,
       "type": "EndPathStatusInserter"
     },
     {
@@ -84,10 +84,10 @@
     {
       "events": 100,
       "label": "siPixelRecHitsPreSplitting@cuda",
-      "mem_alloc": 12517,
-      "mem_free": 70,
-      "time_real": 107.419446,
-      "time_thread": 28.501848,
+      "mem_alloc": 12709,
+      "mem_free": 211,
+      "time_real": 416.396609,
+      "time_thread": 41.495242,
       "type": "SiPixelRecHitFromCUDAPhase1"
     },
     {
@@ -129,226 +129,3646 @@
     {
       "events": 100,
       "label": "tpClusterProducer",
-      "mem_alloc": 764723,
-      "mem_free": 761566,
-      "time_real": 128.940573,
-      "time_thread": 128.556545,
+      "mem_alloc": 764736,
+      "mem_free": 761583,
+      "time_real": 170.01035100000001,
+      "time_thread": 169.166612,
       "type": "ClusterTPAssociationProducer"
     },
     {
       "events": 100,
       "label": "quickTrackAssociatorByHits",
-      "mem_alloc": 40,
-      "mem_free": 23,
-      "time_real": 0.479529,
-      "time_thread": 0.477788,
+      "mem_alloc": 42,
+      "mem_free": 25,
+      "time_real": 0.748373,
+      "time_thread": 0.747217,
       "type": "QuickTrackAssociatorByHitsProducer"
     },
     {
       "events": 100,
       "label": "simpleValidation0",
-      "mem_alloc": 43408,
-      "mem_free": 32661,
-      "time_real": 961.78856,
-      "time_thread": 130.886261,
+      "mem_alloc": 26522,
+      "mem_free": 25773,
+      "time_real": 282.722862,
+      "time_thread": 66.297716,
       "type": "SimpleValidation"
     },
     {
       "events": 100,
       "label": "simpleValidation1",
-      "mem_alloc": 40499,
-      "mem_free": 26741,
-      "time_real": 962.502311,
-      "time_thread": 126.984997,
+      "mem_alloc": 22835,
+      "mem_free": 21543,
+      "time_real": 194.130994,
+      "time_thread": 57.107706,
       "type": "SimpleValidation"
     },
     {
       "events": 100,
       "label": "simpleValidation2",
-      "mem_alloc": 36402,
-      "mem_free": 24954,
-      "time_real": 976.943489,
-      "time_thread": 112.569284,
+      "mem_alloc": 32418,
+      "mem_free": 31387,
+      "time_real": 198.223825,
+      "time_thread": 74.462713,
       "type": "SimpleValidation"
     },
     {
       "events": 100,
       "label": "simpleValidation3",
-      "mem_alloc": 29349,
-      "mem_free": 24376,
-      "time_real": 1000.101102,
-      "time_thread": 83.881477,
+      "mem_alloc": 19760,
+      "mem_free": 19211,
+      "time_real": 112.118149,
+      "time_thread": 45.417231,
       "type": "SimpleValidation"
     },
     {
       "events": 100,
       "label": "simpleValidation4",
-      "mem_alloc": 55492,
-      "mem_free": 37737,
-      "time_real": 1004.540791,
-      "time_thread": 116.637236,
+      "mem_alloc": 21516,
+      "mem_free": 20941,
+      "time_real": 115.932427,
+      "time_thread": 53.896922000000004,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation5",
+      "mem_alloc": 11755,
+      "mem_free": 11502,
+      "time_real": 72.196636,
+      "time_thread": 28.432677,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation6",
+      "mem_alloc": 26451,
+      "mem_free": 25704,
+      "time_real": 83.99845,
+      "time_thread": 62.925317,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation7",
+      "mem_alloc": 28923,
+      "mem_free": 28030,
+      "time_real": 91.352886,
+      "time_thread": 65.258698,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation8",
+      "mem_alloc": 29795,
+      "mem_free": 28936,
+      "time_real": 105.770908,
+      "time_thread": 73.080019,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation9",
+      "mem_alloc": 29519,
+      "mem_free": 28605,
+      "time_real": 117.365459,
+      "time_thread": 68.785464,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation10",
+      "mem_alloc": 27510,
+      "mem_free": 26731,
+      "time_real": 109.493331,
+      "time_thread": 63.013788,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation11",
+      "mem_alloc": 30491,
+      "mem_free": 29607,
+      "time_real": 88.859931,
+      "time_thread": 70.058562,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation12",
+      "mem_alloc": 14675,
+      "mem_free": 13542,
+      "time_real": 63.822152,
+      "time_thread": 46.23707,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation13",
+      "mem_alloc": 24490,
+      "mem_free": 23769,
+      "time_real": 60.629341,
+      "time_thread": 53.028817,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation14",
+      "mem_alloc": 29184,
+      "mem_free": 28352,
+      "time_real": 110.921667,
+      "time_thread": 68.361777,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation15",
+      "mem_alloc": 27993,
+      "mem_free": 26522,
+      "time_real": 70.371054,
+      "time_thread": 64.859999,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation16",
+      "mem_alloc": 26298,
+      "mem_free": 25556,
+      "time_real": 63.900449,
+      "time_thread": 59.196462,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation17",
+      "mem_alloc": 13763,
+      "mem_free": 13444,
+      "time_real": 57.441555,
+      "time_thread": 31.966276,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation18",
+      "mem_alloc": 15575,
+      "mem_free": 15206,
+      "time_real": 45.812612,
+      "time_thread": 36.775404,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation19",
+      "mem_alloc": 16858,
+      "mem_free": 16427,
+      "time_real": 54.147474,
+      "time_thread": 41.674185,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation20",
+      "mem_alloc": 27359,
+      "mem_free": 26525,
+      "time_real": 92.894301,
+      "time_thread": 61.005431,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation21",
+      "mem_alloc": 34974,
+      "mem_free": 33595,
+      "time_real": 126.66198,
+      "time_thread": 81.117449,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation22",
+      "mem_alloc": 26004,
+      "mem_free": 25215,
+      "time_real": 77.731942,
+      "time_thread": 55.900598,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation23",
+      "mem_alloc": 39326,
+      "mem_free": 38028,
+      "time_real": 79.778438,
+      "time_thread": 76.952536,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation24",
+      "mem_alloc": 24295,
+      "mem_free": 23578,
+      "time_real": 54.320083,
+      "time_thread": 53.912123,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation25",
+      "mem_alloc": 33856,
+      "mem_free": 32778,
+      "time_real": 78.452856,
+      "time_thread": 72.438848,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation26",
+      "mem_alloc": 23172,
+      "mem_free": 22190,
+      "time_real": 64.653293,
+      "time_thread": 55.204076,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation27",
+      "mem_alloc": 18140,
+      "mem_free": 17662,
+      "time_real": 43.797654,
+      "time_thread": 43.262324,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation28",
+      "mem_alloc": 12442,
+      "mem_free": 12169,
+      "time_real": 30.14665,
+      "time_thread": 27.51227,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation29",
+      "mem_alloc": 24099,
+      "mem_free": 23400,
+      "time_real": 62.908636,
+      "time_thread": 52.478319,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation30",
+      "mem_alloc": 18873,
+      "mem_free": 18217,
+      "time_real": 51.892889,
+      "time_thread": 45.791546,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation31",
+      "mem_alloc": 34089,
+      "mem_free": 33008,
+      "time_real": 75.760036,
+      "time_thread": 71.023987,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation32",
+      "mem_alloc": 30565,
+      "mem_free": 29612,
+      "time_real": 65.067851,
+      "time_thread": 64.842564,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation33",
+      "mem_alloc": 28455,
+      "mem_free": 27634,
+      "time_real": 60.284578,
+      "time_thread": 59.897555,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation34",
+      "mem_alloc": 24596,
+      "mem_free": 23872,
+      "time_real": 53.234737,
+      "time_thread": 53.028836,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation35",
+      "mem_alloc": 33119,
+      "mem_free": 32139,
+      "time_real": 79.444615,
+      "time_thread": 74.745216,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation36",
+      "mem_alloc": 15059,
+      "mem_free": 14045,
+      "time_real": 36.445226,
+      "time_thread": 36.282949,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation37",
+      "mem_alloc": 42631,
+      "mem_free": 41223,
+      "time_real": 85.891631,
+      "time_thread": 84.693258,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation38",
+      "mem_alloc": 42245,
+      "mem_free": 40847,
+      "time_real": 88.350208,
+      "time_thread": 87.899932,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation39",
+      "mem_alloc": 37117,
+      "mem_free": 35917,
+      "time_real": 78.876958,
+      "time_thread": 77.195325,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation40",
+      "mem_alloc": 21613,
+      "mem_free": 20997,
+      "time_real": 48.088453,
+      "time_thread": 47.319829,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation41",
+      "mem_alloc": 30539,
+      "mem_free": 29585,
+      "time_real": 73.577899,
+      "time_thread": 63.147383,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation42",
+      "mem_alloc": 25500,
+      "mem_free": 24737,
+      "time_real": 73.955195,
+      "time_thread": 54.249925,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation43",
+      "mem_alloc": 14815,
+      "mem_free": 14189,
+      "time_real": 50.326484,
+      "time_thread": 34.772925,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation44",
+      "mem_alloc": 13196,
+      "mem_free": 12897,
+      "time_real": 29.51331,
+      "time_thread": 29.35705,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation45",
+      "mem_alloc": 35085,
+      "mem_free": 33966,
+      "time_real": 70.364256,
+      "time_thread": 70.053232,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation46",
+      "mem_alloc": 28170,
+      "mem_free": 27304,
+      "time_real": 70.440993,
+      "time_thread": 59.338127,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation47",
+      "mem_alloc": 32425,
+      "mem_free": 31398,
+      "time_real": 91.504616,
+      "time_thread": 67.011954,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation48",
+      "mem_alloc": 16335,
+      "mem_free": 15921,
+      "time_real": 46.496112,
+      "time_thread": 35.34282,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation49",
+      "mem_alloc": 12651,
+      "mem_free": 12372,
+      "time_real": 41.203054,
+      "time_thread": 29.468163,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation50",
+      "mem_alloc": 29892,
+      "mem_free": 28958,
+      "time_real": 119.805737,
+      "time_thread": 62.60345,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation51",
+      "mem_alloc": 39001,
+      "mem_free": 37718,
+      "time_real": 80.369654,
+      "time_thread": 79.975278,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation52",
+      "mem_alloc": 30644,
+      "mem_free": 29692,
+      "time_real": 82.181972,
+      "time_thread": 64.704574,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation53",
+      "mem_alloc": 13195,
+      "mem_free": 12897,
+      "time_real": 47.243201,
+      "time_thread": 30.132167,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation54",
+      "mem_alloc": 21066,
+      "mem_free": 20313,
+      "time_real": 143.574293,
+      "time_thread": 48.488575,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation55",
+      "mem_alloc": 31593,
+      "mem_free": 30693,
+      "time_real": 86.176074,
+      "time_thread": 73.508117,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation56",
+      "mem_alloc": 21306,
+      "mem_free": 20743,
+      "time_real": 56.668005,
+      "time_thread": 50.313027,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation57",
+      "mem_alloc": 51711,
+      "mem_free": 49951,
+      "time_real": 128.064888,
+      "time_thread": 104.759298,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation58",
+      "mem_alloc": 21058,
+      "mem_free": 20503,
+      "time_real": 48.238082,
+      "time_thread": 48.003324,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation59",
+      "mem_alloc": 40812,
+      "mem_free": 39470,
+      "time_real": 86.73458,
+      "time_thread": 86.375531,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation60",
+      "mem_alloc": 25335,
+      "mem_free": 24636,
+      "time_real": 80.388262,
+      "time_thread": 57.164069,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation61",
+      "mem_alloc": 25040,
+      "mem_free": 24294,
+      "time_real": 94.670356,
+      "time_thread": 55.798198,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation62",
+      "mem_alloc": 23162,
+      "mem_free": 22533,
+      "time_real": 56.423526,
+      "time_thread": 52.848514,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation63",
+      "mem_alloc": 12332,
+      "mem_free": 12063,
+      "time_real": 55.33781,
+      "time_thread": 29.875197,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation64",
+      "mem_alloc": 14399,
+      "mem_free": 14074,
+      "time_real": 35.76603,
+      "time_thread": 35.558437,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation65",
+      "mem_alloc": 16926,
+      "mem_free": 16510,
+      "time_real": 46.74555,
+      "time_thread": 40.314161,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation66",
+      "mem_alloc": 20137,
+      "mem_free": 19621,
+      "time_real": 45.977185,
+      "time_thread": 45.768866,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation67",
+      "mem_alloc": 12012,
+      "mem_free": 11754,
+      "time_real": 27.884125,
+      "time_thread": 27.67715,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation68",
+      "mem_alloc": 15421,
+      "mem_free": 15038,
+      "time_real": 35.376254,
+      "time_thread": 35.186787,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation69",
+      "mem_alloc": 23825,
+      "mem_free": 23122,
+      "time_real": 54.386449,
+      "time_thread": 54.110552,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation70",
+      "mem_alloc": 38692,
+      "mem_free": 37431,
+      "time_real": 83.585154,
+      "time_thread": 81.634448,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation71",
+      "mem_alloc": 30080,
+      "mem_free": 29234,
+      "time_real": 92.58443,
+      "time_thread": 71.136619,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation72",
+      "mem_alloc": 12799,
+      "mem_free": 12523,
+      "time_real": 34.294998,
+      "time_thread": 29.922258,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation73",
+      "mem_alloc": 23894,
+      "mem_free": 23194,
+      "time_real": 71.801446,
+      "time_thread": 56.153746,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation74",
+      "mem_alloc": 21106,
+      "mem_free": 20511,
+      "time_real": 59.845372,
+      "time_thread": 47.193533,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation75",
+      "mem_alloc": 39374,
+      "mem_free": 38184,
+      "time_real": 85.183167,
+      "time_thread": 84.80946900000001,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation76",
+      "mem_alloc": 40665,
+      "mem_free": 39336,
+      "time_real": 86.521317,
+      "time_thread": 83.377308,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation77",
+      "mem_alloc": 21487,
+      "mem_free": 20872,
+      "time_real": 55.144262,
+      "time_thread": 47.877728,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation78",
+      "mem_alloc": 22462,
+      "mem_free": 21865,
+      "time_real": 63.064533,
+      "time_thread": 51.772584,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation79",
+      "mem_alloc": 13177,
+      "mem_free": 12887,
+      "time_real": 32.041086,
+      "time_thread": 31.879724,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation80",
+      "mem_alloc": 25847,
+      "mem_free": 25120,
+      "time_real": 60.631458,
+      "time_thread": 57.953743,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation81",
+      "mem_alloc": 28479,
+      "mem_free": 27601,
+      "time_real": 78.538893,
+      "time_thread": 62.009626,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation82",
+      "mem_alloc": 22073,
+      "mem_free": 21485,
+      "time_real": 51.200759,
+      "time_thread": 50.956036,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation83",
+      "mem_alloc": 17399,
+      "mem_free": 16967,
+      "time_real": 46.441539,
+      "time_thread": 41.624379,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation84",
+      "mem_alloc": 29109,
+      "mem_free": 28282,
+      "time_real": 65.137378,
+      "time_thread": 64.866274,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation85",
+      "mem_alloc": 13267,
+      "mem_free": 12962,
+      "time_real": 35.216511,
+      "time_thread": 30.930528,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation86",
+      "mem_alloc": 17898,
+      "mem_free": 17422,
+      "time_real": 43.509324,
+      "time_thread": 40.148479,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation87",
+      "mem_alloc": 26236,
+      "mem_free": 25448,
+      "time_real": 58.284287,
+      "time_thread": 57.995819,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation88",
+      "mem_alloc": 11977,
+      "mem_free": 11717,
+      "time_real": 29.371162,
+      "time_thread": 29.196128,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation89",
+      "mem_alloc": 38034,
+      "mem_free": 38457,
+      "time_real": 82.4622,
+      "time_thread": 82.092152,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation90",
+      "mem_alloc": 33775,
+      "mem_free": 32694,
+      "time_real": 75.19179,
+      "time_thread": 74.825007,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation91",
+      "mem_alloc": 35030,
+      "mem_free": 33902,
+      "time_real": 86.894741,
+      "time_thread": 78.655571,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation92",
+      "mem_alloc": 23855,
+      "mem_free": 22667,
+      "time_real": 69.748687,
+      "time_thread": 60.236397,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation93",
+      "mem_alloc": 25422,
+      "mem_free": 24715,
+      "time_real": 91.104253,
+      "time_thread": 60.077567,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation94",
+      "mem_alloc": 25416,
+      "mem_free": 24160,
+      "time_real": 120.641737,
+      "time_thread": 62.809621,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation95",
+      "mem_alloc": 26738,
+      "mem_free": 25134,
+      "time_real": 138.18328,
+      "time_thread": 65.869731,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation96",
+      "mem_alloc": 27120,
+      "mem_free": 26095,
+      "time_real": 179.569324,
+      "time_thread": 61.914828,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation97",
+      "mem_alloc": 31763,
+      "mem_free": 30851,
+      "time_real": 246.691213,
+      "time_thread": 87.480436,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation98",
+      "mem_alloc": 45471,
+      "mem_free": 37585,
+      "time_real": 330.426014,
+      "time_thread": 137.950096,
+      "type": "SimpleValidation"
+    },
+    {
+      "events": 100,
+      "label": "simpleValidation99",
+      "mem_alloc": 114791,
+      "mem_free": 70421,
+      "time_real": 746.030509,
+      "time_thread": 367.680472,
       "type": "SimpleValidation"
     },
     {
       "events": 100,
       "label": "consumer",
-      "mem_alloc": 9,
+      "mem_alloc": 10,
       "mem_free": 11,
-      "time_real": 0.250051,
-      "time_thread": 0.249665,
+      "time_real": 0.328508,
+      "time_thread": 0.332713,
       "type": "GenericConsumer"
     },
     {
       "events": 100,
       "label": "offlineBeamSpot",
-      "mem_alloc": 268,
-      "mem_free": 227,
-      "time_real": 1.612829,
-      "time_thread": 1.610189,
+      "mem_alloc": 270,
+      "mem_free": 226,
+      "time_real": 2.529776,
+      "time_thread": 2.530254,
       "type": "BeamSpotProducer"
     },
     {
       "events": 100,
       "label": "offlineBeamSpotToCUDA",
-      "mem_alloc": 108,
-      "mem_free": 27,
-      "time_real": 4.211226,
-      "time_thread": 3.700202,
+      "mem_alloc": 184,
+      "mem_free": 30,
+      "time_real": 80.376377,
+      "time_thread": 8.457329,
       "type": "BeamSpotToCUDA"
     },
     {
       "events": 100,
       "label": "pixelTracks0",
-      "mem_alloc": 16072,
-      "mem_free": 5437,
-      "time_real": 17.542114,
-      "time_thread": 17.459481,
+      "mem_alloc": 39068,
+      "mem_free": 13401,
+      "time_real": 56.450168,
+      "time_thread": 55.448955,
       "type": "PixelTrackProducerFromSoAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracks1",
-      "mem_alloc": 16653,
-      "mem_free": 5623,
-      "time_real": 16.793558,
-      "time_thread": 16.73376,
+      "mem_alloc": 29741,
+      "mem_free": 10062,
+      "time_real": 43.53225,
+      "time_thread": 42.731459,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks10",
+      "mem_alloc": 40907,
+      "mem_free": 14009,
+      "time_real": 60.337606,
+      "time_thread": 56.597913,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks11",
+      "mem_alloc": 46308,
+      "mem_free": 15871,
+      "time_real": 71.366725,
+      "time_thread": 65.30168,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks12",
+      "mem_alloc": 14071,
+      "mem_free": 4676,
+      "time_real": 21.0608,
+      "time_thread": 20.573214,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks13",
+      "mem_alloc": 33971,
+      "mem_free": 10812,
+      "time_real": 46.911374,
+      "time_thread": 44.386361,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks14",
+      "mem_alloc": 43564,
+      "mem_free": 14838,
+      "time_real": 63.11092,
+      "time_thread": 58.797864,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks15",
+      "mem_alloc": 39357,
+      "mem_free": 13514,
+      "time_real": 55.157945,
+      "time_thread": 52.903146,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks16",
+      "mem_alloc": 38944,
+      "mem_free": 13427,
+      "time_real": 56.241175,
+      "time_thread": 53.204897,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks17",
+      "mem_alloc": 15201,
+      "mem_free": 5008,
+      "time_real": 21.946441,
+      "time_thread": 21.189123,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks18",
+      "mem_alloc": 19089,
+      "mem_free": 6437,
+      "time_real": 28.026336,
+      "time_thread": 26.264072,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks19",
+      "mem_alloc": 20609,
+      "mem_free": 6690,
+      "time_real": 34.147609,
+      "time_thread": 29.298995,
       "type": "PixelTrackProducerFromSoAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracks2",
-      "mem_alloc": 17007,
-      "mem_free": 5727,
-      "time_real": 17.49184,
-      "time_thread": 17.427803,
+      "mem_alloc": 47737,
+      "mem_free": 14938,
+      "time_real": 71.429171,
+      "time_thread": 64.843524,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks20",
+      "mem_alloc": 38997,
+      "mem_free": 12346,
+      "time_real": 56.652853,
+      "time_thread": 52.341406,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks21",
+      "mem_alloc": 51530,
+      "mem_free": 16387,
+      "time_real": 71.634806,
+      "time_thread": 69.52551,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks22",
+      "mem_alloc": 36013,
+      "mem_free": 11203,
+      "time_real": 49.431697,
+      "time_thread": 46.809053,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks23",
+      "mem_alloc": 59728,
+      "mem_free": 18608,
+      "time_real": 76.475354,
+      "time_thread": 75.441056,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks24",
+      "mem_alloc": 33325,
+      "mem_free": 10506,
+      "time_real": 43.374048,
+      "time_thread": 42.810215,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks25",
+      "mem_alloc": 50364,
+      "mem_free": 15846,
+      "time_real": 68.32971,
+      "time_thread": 67.383362,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks26",
+      "mem_alloc": 31788,
+      "mem_free": 11004,
+      "time_real": 42.577549,
+      "time_thread": 42.046822,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks27",
+      "mem_alloc": 23093,
+      "mem_free": 7557,
+      "time_real": 34.419736,
+      "time_thread": 32.398877,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks28",
+      "mem_alloc": 13009,
+      "mem_free": 4349,
+      "time_real": 16.776954,
+      "time_thread": 16.687403,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks29",
+      "mem_alloc": 34387,
+      "mem_free": 11458,
+      "time_real": 44.779338,
+      "time_thread": 44.36435,
       "type": "PixelTrackProducerFromSoAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracks3",
-      "mem_alloc": 17469,
-      "mem_free": 5895,
-      "time_real": 19.91212,
-      "time_thread": 17.900063,
+      "mem_alloc": 25623,
+      "mem_free": 8176,
+      "time_real": 36.770047,
+      "time_thread": 34.581069,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks30",
+      "mem_alloc": 24095,
+      "mem_free": 8111,
+      "time_real": 33.117077,
+      "time_thread": 32.840466,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks31",
+      "mem_alloc": 50946,
+      "mem_free": 16118,
+      "time_real": 66.991354,
+      "time_thread": 66.662815,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks32",
+      "mem_alloc": 44368,
+      "mem_free": 13890,
+      "time_real": 56.033243,
+      "time_thread": 55.670037,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks33",
+      "mem_alloc": 42297,
+      "mem_free": 14355,
+      "time_real": 52.885597,
+      "time_thread": 52.550537,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks34",
+      "mem_alloc": 34439,
+      "mem_free": 11073,
+      "time_real": 44.285915,
+      "time_thread": 43.292466,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks35",
+      "mem_alloc": 50930,
+      "mem_free": 17533,
+      "time_real": 71.995983,
+      "time_thread": 66.766537,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks36",
+      "mem_alloc": 15106,
+      "mem_free": 4977,
+      "time_real": 20.066657,
+      "time_thread": 19.949741,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks37",
+      "mem_alloc": 65619,
+      "mem_free": 20517,
+      "time_real": 86.359915,
+      "time_thread": 83.158331,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks38",
+      "mem_alloc": 64605,
+      "mem_free": 20007,
+      "time_real": 83.312902,
+      "time_thread": 82.667688,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks39",
+      "mem_alloc": 56083,
+      "mem_free": 17608,
+      "time_real": 71.896814,
+      "time_thread": 71.479276,
       "type": "PixelTrackProducerFromSoAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracks4",
-      "mem_alloc": 17706,
-      "mem_free": 5989,
-      "time_real": 19.66146,
-      "time_thread": 19.569197,
+      "mem_alloc": 30521,
+      "mem_free": 10648,
+      "time_real": 44.893839,
+      "time_thread": 43.724615,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks40",
+      "mem_alloc": 28630,
+      "mem_free": 9097,
+      "time_real": 35.839095,
+      "time_thread": 35.451924,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks41",
+      "mem_alloc": 44571,
+      "mem_free": 14147,
+      "time_real": 54.406097,
+      "time_thread": 54.150565,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks42",
+      "mem_alloc": 35741,
+      "mem_free": 11433,
+      "time_real": 45.070443,
+      "time_thread": 44.823221,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks43",
+      "mem_alloc": 16084,
+      "mem_free": 5264,
+      "time_real": 21.11598,
+      "time_thread": 20.625663,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks44",
+      "mem_alloc": 14264,
+      "mem_free": 4728,
+      "time_real": 20.990587,
+      "time_thread": 18.710577,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks45",
+      "mem_alloc": 52508,
+      "mem_free": 16413,
+      "time_real": 65.752928,
+      "time_thread": 63.841604,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks46",
+      "mem_alloc": 40236,
+      "mem_free": 12670,
+      "time_real": 49.212315,
+      "time_thread": 48.92687,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks47",
+      "mem_alloc": 47902,
+      "mem_free": 15070,
+      "time_real": 62.046929,
+      "time_thread": 58.341253,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks48",
+      "mem_alloc": 19549,
+      "mem_free": 6319,
+      "time_real": 24.714688,
+      "time_thread": 23.880087,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks49",
+      "mem_alloc": 13361,
+      "mem_free": 4451,
+      "time_real": 17.730439,
+      "time_thread": 17.632625,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks5",
+      "mem_alloc": 12088,
+      "mem_free": 4073,
+      "time_real": 17.975234,
+      "time_thread": 17.505942,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks50",
+      "mem_alloc": 43237,
+      "mem_free": 13735,
+      "time_real": 55.984752,
+      "time_thread": 53.469649,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks51",
+      "mem_alloc": 59227,
+      "mem_free": 18458,
+      "time_real": 74.700403,
+      "time_thread": 74.333474,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks52",
+      "mem_alloc": 44690,
+      "mem_free": 14110,
+      "time_real": 58.012102,
+      "time_thread": 57.078102,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks53",
+      "mem_alloc": 14264,
+      "mem_free": 4728,
+      "time_real": 18.639659,
+      "time_thread": 18.521254,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks54",
+      "mem_alloc": 27715,
+      "mem_free": 8990,
+      "time_real": 37.448049,
+      "time_thread": 36.566701,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks55",
+      "mem_alloc": 47457,
+      "mem_free": 16082,
+      "time_real": 61.93022,
+      "time_thread": 61.021445,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks56",
+      "mem_alloc": 29970,
+      "mem_free": 10415,
+      "time_real": 39.747578,
+      "time_thread": 39.313382,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks57",
+      "mem_alloc": 81452,
+      "mem_free": 25445,
+      "time_real": 103.317588,
+      "time_thread": 100.957359,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks58",
+      "mem_alloc": 28591,
+      "mem_free": 9472,
+      "time_real": 38.116603,
+      "time_thread": 37.88435,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks59",
+      "mem_alloc": 62701,
+      "mem_free": 19803,
+      "time_real": 82.783148,
+      "time_thread": 81.080967,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks6",
+      "mem_alloc": 38909,
+      "mem_free": 13342,
+      "time_real": 59.629024,
+      "time_thread": 55.617134,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks60",
+      "mem_alloc": 36286,
+      "mem_free": 12075,
+      "time_real": 47.040953,
+      "time_thread": 46.810331,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks61",
+      "mem_alloc": 34982,
+      "mem_free": 11170,
+      "time_real": 46.028709,
+      "time_thread": 45.739969,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks62",
+      "mem_alloc": 32444,
+      "mem_free": 10833,
+      "time_real": 42.854025,
+      "time_thread": 42.633352,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks63",
+      "mem_alloc": 13150,
+      "mem_free": 4398,
+      "time_real": 17.688831,
+      "time_thread": 17.614132,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks64",
+      "mem_alloc": 17282,
+      "mem_free": 5872,
+      "time_real": 23.154077,
+      "time_thread": 23.041584,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks65",
+      "mem_alloc": 21277,
+      "mem_free": 7049,
+      "time_real": 28.344078,
+      "time_thread": 28.215214,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks66",
+      "mem_alloc": 27318,
+      "mem_free": 9189,
+      "time_real": 36.349462,
+      "time_thread": 35.176006,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks67",
+      "mem_alloc": 12344,
+      "mem_free": 4157,
+      "time_real": 18.705951,
+      "time_thread": 17.050815,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks68",
+      "mem_alloc": 17936,
+      "mem_free": 5806,
+      "time_real": 23.672166,
+      "time_thread": 23.533898,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks69",
+      "mem_alloc": 32697,
+      "mem_free": 10324,
+      "time_real": 41.497144,
+      "time_thread": 41.270239,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks7",
+      "mem_alloc": 41502,
+      "mem_free": 13083,
+      "time_real": 56.916431,
+      "time_thread": 55.811902,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks70",
+      "mem_alloc": 58647,
+      "mem_free": 18176,
+      "time_real": 76.89081,
+      "time_thread": 74.181059,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks71",
+      "mem_alloc": 44920,
+      "mem_free": 15125,
+      "time_real": 63.044189,
+      "time_thread": 58.385918,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks72",
+      "mem_alloc": 14064,
+      "mem_free": 4727,
+      "time_real": 18.467101,
+      "time_thread": 18.345316,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks73",
+      "mem_alloc": 24440,
+      "mem_free": 7815,
+      "time_real": 32.279635,
+      "time_thread": 32.095195,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks74",
+      "mem_alloc": 27928,
+      "mem_free": 8926,
+      "time_real": 40.269335,
+      "time_thread": 36.047771,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks75",
+      "mem_alloc": 60016,
+      "mem_free": 19622,
+      "time_real": 81.358757,
+      "time_thread": 77.889564,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks76",
+      "mem_alloc": 62111,
+      "mem_free": 19329,
+      "time_real": 81.124354,
+      "time_thread": 79.736868,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks77",
+      "mem_alloc": 28588,
+      "mem_free": 9110,
+      "time_real": 36.861636,
+      "time_thread": 36.14604,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks78",
+      "mem_alloc": 31154,
+      "mem_free": 10316,
+      "time_real": 42.526364,
+      "time_thread": 39.290704,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks79",
+      "mem_alloc": 14704,
+      "mem_free": 4931,
+      "time_real": 21.514704,
+      "time_thread": 20.267883,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks8",
+      "mem_alloc": 44545,
+      "mem_free": 15085,
+      "time_real": 71.768029,
+      "time_thread": 63.46178,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks80",
+      "mem_alloc": 37482,
+      "mem_free": 12729,
+      "time_real": 48.1165,
+      "time_thread": 47.867905,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks81",
+      "mem_alloc": 40849,
+      "mem_free": 12882,
+      "time_real": 55.205561,
+      "time_thread": 52.452741,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks82",
+      "mem_alloc": 30909,
+      "mem_free": 10445,
+      "time_real": 42.742991,
+      "time_thread": 40.528935,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks83",
+      "mem_alloc": 22200,
+      "mem_free": 7385,
+      "time_real": 29.874302,
+      "time_thread": 29.033938,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks84",
+      "mem_alloc": 42342,
+      "mem_free": 13940,
+      "time_real": 54.031641,
+      "time_thread": 53.732461,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks85",
+      "mem_alloc": 14484,
+      "mem_free": 4782,
+      "time_real": 18.970168,
+      "time_thread": 18.84401,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks86",
+      "mem_alloc": 22396,
+      "mem_free": 7167,
+      "time_real": 29.136101,
+      "time_thread": 28.530945,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks87",
+      "mem_alloc": 36573,
+      "mem_free": 11424,
+      "time_real": 47.130218,
+      "time_thread": 46.504138,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks88",
+      "mem_alloc": 12460,
+      "mem_free": 4177,
+      "time_real": 17.815133,
+      "time_thread": 17.496424,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks89",
+      "mem_alloc": 53049,
+      "mem_free": 16762,
+      "time_real": 69.358943,
+      "time_thread": 68.617146,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks9",
+      "mem_alloc": 42846,
+      "mem_free": 13650,
+      "time_real": 62.307291,
+      "time_thread": 58.781245,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks90",
+      "mem_alloc": 50101,
+      "mem_free": 15769,
+      "time_real": 64.040309,
+      "time_thread": 63.664851,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks91",
+      "mem_alloc": 51811,
+      "mem_free": 16042,
+      "time_real": 67.39512,
+      "time_thread": 66.83263,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks92",
+      "mem_alloc": 32488,
+      "mem_free": 11189,
+      "time_real": 42.74725,
+      "time_thread": 42.52421,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks93",
+      "mem_alloc": 36654,
+      "mem_free": 12337,
+      "time_real": 49.265483,
+      "time_thread": 48.996403,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks94",
+      "mem_alloc": 35157,
+      "mem_free": 11938,
+      "time_real": 46.435925,
+      "time_thread": 46.178351,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks95",
+      "mem_alloc": 35560,
+      "mem_free": 11911,
+      "time_real": 45.292703,
+      "time_thread": 44.834658,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks96",
+      "mem_alloc": 37553,
+      "mem_free": 11901,
+      "time_real": 46.470885,
+      "time_thread": 46.229855,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks97",
+      "mem_alloc": 28660,
+      "mem_free": 9053,
+      "time_real": 36.775763,
+      "time_thread": 36.587306,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks98",
+      "mem_alloc": 41947,
+      "mem_free": 14014,
+      "time_real": 56.121428,
+      "time_thread": 55.727941,
+      "type": "PixelTrackProducerFromSoAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracks99",
+      "mem_alloc": 14178,
+      "mem_free": 4705,
+      "time_real": 20.755195,
+      "time_thread": 20.416816,
       "type": "PixelTrackProducerFromSoAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksCUDA0",
-      "mem_alloc": 420,
-      "mem_free": 233,
-      "time_real": 121.464834,
-      "time_thread": 20.217944,
+      "mem_alloc": 437,
+      "mem_free": 272,
+      "time_real": 1189.807,
+      "time_thread": 84.835468,
       "type": "CAHitNtupletCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksCUDA1",
-      "mem_alloc": 361,
-      "mem_free": 233,
-      "time_real": 228.33744,
-      "time_thread": 19.952373,
+      "mem_alloc": 513,
+      "mem_free": 248,
+      "time_real": 818.066557,
+      "time_thread": 72.40067,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA10",
+      "mem_alloc": 607,
+      "mem_free": 300,
+      "time_real": 953.889831,
+      "time_thread": 80.464009,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA11",
+      "mem_alloc": 938,
+      "mem_free": 271,
+      "time_real": 1319.70448,
+      "time_thread": 87.721217,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA12",
+      "mem_alloc": 583,
+      "mem_free": 277,
+      "time_real": 1247.916854,
+      "time_thread": 80.756708,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA13",
+      "mem_alloc": 454,
+      "mem_free": 279,
+      "time_real": 1362.928642,
+      "time_thread": 78.945042,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA14",
+      "mem_alloc": 563,
+      "mem_free": 292,
+      "time_real": 1193.17787,
+      "time_thread": 91.278305,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA15",
+      "mem_alloc": 832,
+      "mem_free": 1352,
+      "time_real": 1018.371091,
+      "time_thread": 154.572923,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA16",
+      "mem_alloc": 617,
+      "mem_free": 289,
+      "time_real": 1014.161458,
+      "time_thread": 88.920499,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA17",
+      "mem_alloc": 512,
+      "mem_free": 293,
+      "time_real": 1003.668198,
+      "time_thread": 83.16865,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA18",
+      "mem_alloc": 476,
+      "mem_free": 280,
+      "time_real": 1055.186198,
+      "time_thread": 79.72237,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA19",
+      "mem_alloc": 992,
+      "mem_free": 280,
+      "time_real": 1190.424762,
+      "time_thread": 81.471907,
       "type": "CAHitNtupletCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksCUDA2",
-      "mem_alloc": 389,
-      "mem_free": 233,
-      "time_real": 210.069756,
-      "time_thread": 20.018053,
+      "mem_alloc": 391,
+      "mem_free": 258,
+      "time_real": 748.152604,
+      "time_thread": 71.237682,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA20",
+      "mem_alloc": 460,
+      "mem_free": 258,
+      "time_real": 1087.436745,
+      "time_thread": 80.053157,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA21",
+      "mem_alloc": 451,
+      "mem_free": 280,
+      "time_real": 1786.727319,
+      "time_thread": 81.961456,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA22",
+      "mem_alloc": 519,
+      "mem_free": 258,
+      "time_real": 1043.68653,
+      "time_thread": 78.909839,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA23",
+      "mem_alloc": 515,
+      "mem_free": 275,
+      "time_real": 1085.7147,
+      "time_thread": 82.518088,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA24",
+      "mem_alloc": 1299,
+      "mem_free": 264,
+      "time_real": 1055.638172,
+      "time_thread": 85.64992,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA25",
+      "mem_alloc": 562,
+      "mem_free": 267,
+      "time_real": 1133.168172,
+      "time_thread": 83.217898,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA26",
+      "mem_alloc": 442,
+      "mem_free": 258,
+      "time_real": 1181.525515,
+      "time_thread": 79.56425,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA27",
+      "mem_alloc": 597,
+      "mem_free": 285,
+      "time_real": 997.924408,
+      "time_thread": 78.667851,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA28",
+      "mem_alloc": 603,
+      "mem_free": 243,
+      "time_real": 893.760712,
+      "time_thread": 75.872165,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA29",
+      "mem_alloc": 451,
+      "mem_free": 263,
+      "time_real": 1166.903339,
+      "time_thread": 78.101722,
       "type": "CAHitNtupletCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksCUDA3",
-      "mem_alloc": 326,
-      "mem_free": 231,
-      "time_real": 218.88438,
-      "time_thread": 19.715765,
+      "mem_alloc": 418,
+      "mem_free": 249,
+      "time_real": 961.186774,
+      "time_thread": 77.917815,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA30",
+      "mem_alloc": 946,
+      "mem_free": 271,
+      "time_real": 1080.621408,
+      "time_thread": 79.760844,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA31",
+      "mem_alloc": 473,
+      "mem_free": 274,
+      "time_real": 999.005814,
+      "time_thread": 76.149737,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA32",
+      "mem_alloc": 450,
+      "mem_free": 260,
+      "time_real": 1350.193021,
+      "time_thread": 75.748206,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA33",
+      "mem_alloc": 439,
+      "mem_free": 250,
+      "time_real": 1102.113433,
+      "time_thread": 73.915976,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA34",
+      "mem_alloc": 592,
+      "mem_free": 261,
+      "time_real": 1077.86706,
+      "time_thread": 84.292881,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA35",
+      "mem_alloc": 550,
+      "mem_free": 263,
+      "time_real": 998.008688,
+      "time_thread": 80.9932,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA36",
+      "mem_alloc": 904,
+      "mem_free": 257,
+      "time_real": 1404.142902,
+      "time_thread": 78.014931,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA37",
+      "mem_alloc": 597,
+      "mem_free": 251,
+      "time_real": 1084.662018,
+      "time_thread": 83.569352,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA38",
+      "mem_alloc": 532,
+      "mem_free": 259,
+      "time_real": 1120.301811,
+      "time_thread": 76.489885,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA39",
+      "mem_alloc": 1019,
+      "mem_free": 312,
+      "time_real": 1348.428145,
+      "time_thread": 79.949133,
       "type": "CAHitNtupletCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksCUDA4",
-      "mem_alloc": 513,
+      "mem_alloc": 503,
+      "mem_free": 300,
+      "time_real": 1015.936855,
+      "time_thread": 83.006759,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA40",
+      "mem_alloc": 483,
+      "mem_free": 252,
+      "time_real": 1760.112061,
+      "time_thread": 81.066964,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA41",
+      "mem_alloc": 632,
+      "mem_free": 276,
+      "time_real": 1021.876251,
+      "time_thread": 80.018682,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA42",
+      "mem_alloc": 505,
+      "mem_free": 256,
+      "time_real": 904.957276,
+      "time_thread": 82.585361,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA43",
+      "mem_alloc": 452,
+      "mem_free": 250,
+      "time_real": 1079.984602,
+      "time_thread": 81.4167,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA44",
+      "mem_alloc": 963,
+      "mem_free": 257,
+      "time_real": 965.499656,
+      "time_thread": 79.658238,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA45",
+      "mem_alloc": 510,
+      "mem_free": 231,
+      "time_real": 1142.487602,
+      "time_thread": 76.625614,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA46",
+      "mem_alloc": 514,
       "mem_free": 239,
-      "time_real": 182.258857,
-      "time_thread": 26.321647,
+      "time_real": 996.975849,
+      "time_thread": 78.843029,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA47",
+      "mem_alloc": 877,
+      "mem_free": 269,
+      "time_real": 1042.7328889999999,
+      "time_thread": 83.225727,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA48",
+      "mem_alloc": 463,
+      "mem_free": 261,
+      "time_real": 1304.535974,
+      "time_thread": 83.680704,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA49",
+      "mem_alloc": 507,
+      "mem_free": 242,
+      "time_real": 1112.637737,
+      "time_thread": 78.298473,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA5",
+      "mem_alloc": 410,
+      "mem_free": 261,
+      "time_real": 897.869341,
+      "time_thread": 81.83635,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA50",
+      "mem_alloc": 441,
+      "mem_free": 263,
+      "time_real": 945.660212,
+      "time_thread": 74.713765,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA51",
+      "mem_alloc": 528,
+      "mem_free": 260,
+      "time_real": 1058.05871,
+      "time_thread": 75.755925,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA52",
+      "mem_alloc": 975,
+      "mem_free": 254,
+      "time_real": 1148.808677,
+      "time_thread": 83.114629,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA53",
+      "mem_alloc": 512,
+      "mem_free": 248,
+      "time_real": 950.394725,
+      "time_thread": 75.996931,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA54",
+      "mem_alloc": 543,
+      "mem_free": 261,
+      "time_real": 935.573005,
+      "time_thread": 80.631826,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA55",
+      "mem_alloc": 525,
+      "mem_free": 242,
+      "time_real": 1096.96243,
+      "time_thread": 79.054849,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA56",
+      "mem_alloc": 485,
+      "mem_free": 246,
+      "time_real": 869.284544,
+      "time_thread": 72.054348,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA57",
+      "mem_alloc": 1088,
+      "mem_free": 268,
+      "time_real": 1216.476172,
+      "time_thread": 84.924663,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA58",
+      "mem_alloc": 585,
+      "mem_free": 254,
+      "time_real": 1000.974953,
+      "time_thread": 78.634974,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA59",
+      "mem_alloc": 556,
+      "mem_free": 264,
+      "time_real": 1041.892177,
+      "time_thread": 78.046259,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA6",
+      "mem_alloc": 956,
+      "mem_free": 286,
+      "time_real": 881.515813,
+      "time_thread": 82.528044,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA60",
+      "mem_alloc": 538,
+      "mem_free": 246,
+      "time_real": 1347.147797,
+      "time_thread": 76.471033,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA61",
+      "mem_alloc": 865,
+      "mem_free": 283,
+      "time_real": 1019.883777,
+      "time_thread": 74.089914,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA62",
+      "mem_alloc": 951,
+      "mem_free": 278,
+      "time_real": 1044.612085,
+      "time_thread": 82.990835,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA63",
+      "mem_alloc": 983,
+      "mem_free": 4795,
+      "time_real": 1411.457615,
+      "time_thread": 388.550195,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA64",
+      "mem_alloc": 876,
+      "mem_free": 243,
+      "time_real": 849.407277,
+      "time_thread": 73.587921,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA65",
+      "mem_alloc": 489,
+      "mem_free": 245,
+      "time_real": 1321.281308,
+      "time_thread": 80.410369,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA66",
+      "mem_alloc": 1264,
+      "mem_free": 5349,
+      "time_real": 1387.811746,
+      "time_thread": 392.387681,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA67",
+      "mem_alloc": 603,
+      "mem_free": 247,
+      "time_real": 1608.125229,
+      "time_thread": 76.526702,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA68",
+      "mem_alloc": 536,
+      "mem_free": 264,
+      "time_real": 1580.022801,
+      "time_thread": 83.084061,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA69",
+      "mem_alloc": 527,
+      "mem_free": 247,
+      "time_real": 1204.311132,
+      "time_thread": 85.50765,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA7",
+      "mem_alloc": 918,
+      "mem_free": 273,
+      "time_real": 1055.080301,
+      "time_thread": 87.162413,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA70",
+      "mem_alloc": 497,
+      "mem_free": 253,
+      "time_real": 1241.817963,
+      "time_thread": 82.486796,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA71",
+      "mem_alloc": 658,
+      "mem_free": 307,
+      "time_real": 1081.478939,
+      "time_thread": 85.136936,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA72",
+      "mem_alloc": 1039,
+      "mem_free": 290,
+      "time_real": 1215.717935,
+      "time_thread": 86.667631,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA73",
+      "mem_alloc": 659,
+      "mem_free": 280,
+      "time_real": 1104.247883,
+      "time_thread": 84.195477,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA74",
+      "mem_alloc": 560,
+      "mem_free": 254,
+      "time_real": 1007.261156,
+      "time_thread": 77.797672,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA75",
+      "mem_alloc": 505,
+      "mem_free": 251,
+      "time_real": 814.424161,
+      "time_thread": 75.137376,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA76",
+      "mem_alloc": 961,
+      "mem_free": 269,
+      "time_real": 1078.831116,
+      "time_thread": 84.1143,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA77",
+      "mem_alloc": 506,
+      "mem_free": 247,
+      "time_real": 1109.132439,
+      "time_thread": 80.591503,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA78",
+      "mem_alloc": 892,
+      "mem_free": 244,
+      "time_real": 1161.044187,
+      "time_thread": 74.110214,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA79",
+      "mem_alloc": 505,
+      "mem_free": 254,
+      "time_real": 959.659631,
+      "time_thread": 74.928822,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA8",
+      "mem_alloc": 617,
+      "mem_free": 286,
+      "time_real": 1121.095795,
+      "time_thread": 86.879217,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA80",
+      "mem_alloc": 1039,
+      "mem_free": 281,
+      "time_real": 1665.714985,
+      "time_thread": 79.361147,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA81",
+      "mem_alloc": 559,
+      "mem_free": 263,
+      "time_real": 1193.182066,
+      "time_thread": 77.275801,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA82",
+      "mem_alloc": 521,
+      "mem_free": 264,
+      "time_real": 928.96341,
+      "time_thread": 78.395502,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA83",
+      "mem_alloc": 494,
+      "mem_free": 261,
+      "time_real": 1155.700177,
+      "time_thread": 75.055338,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA84",
+      "mem_alloc": 1005,
+      "mem_free": 256,
+      "time_real": 1296.279365,
+      "time_thread": 76.201743,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA85",
+      "mem_alloc": 513,
+      "mem_free": 256,
+      "time_real": 1310.008947,
+      "time_thread": 78.989398,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA86",
+      "mem_alloc": 423,
+      "mem_free": 256,
+      "time_real": 1234.706871,
+      "time_thread": 74.57362,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA87",
+      "mem_alloc": 531,
+      "mem_free": 247,
+      "time_real": 980.058959,
+      "time_thread": 73.412361,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA88",
+      "mem_alloc": 477,
+      "mem_free": 240,
+      "time_real": 1366.207096,
+      "time_thread": 69.211064,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA89",
+      "mem_alloc": 663,
+      "mem_free": 289,
+      "time_real": 1630.313584,
+      "time_thread": 80.858401,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA9",
+      "mem_alloc": 624,
+      "mem_free": 283,
+      "time_real": 985.949737,
+      "time_thread": 86.862949,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA90",
+      "mem_alloc": 977,
+      "mem_free": 260,
+      "time_real": 1114.203595,
+      "time_thread": 75.144157,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA91",
+      "mem_alloc": 483,
+      "mem_free": 260,
+      "time_real": 1515.907152,
+      "time_thread": 76.589651,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA92",
+      "mem_alloc": 563,
+      "mem_free": 269,
+      "time_real": 1059.25117,
+      "time_thread": 75.106409,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA93",
+      "mem_alloc": 934,
+      "mem_free": 273,
+      "time_real": 1360.832325,
+      "time_thread": 88.782363,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA94",
+      "mem_alloc": 571,
+      "mem_free": 263,
+      "time_real": 1164.03833,
+      "time_thread": 72.072065,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA95",
+      "mem_alloc": 571,
+      "mem_free": 271,
+      "time_real": 1440.769253,
+      "time_thread": 82.968008,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA96",
+      "mem_alloc": 951,
+      "mem_free": 263,
+      "time_real": 1218.594038,
+      "time_thread": 76.142798,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA97",
+      "mem_alloc": 562,
+      "mem_free": 261,
+      "time_real": 1330.056266,
+      "time_thread": 81.090792,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA98",
+      "mem_alloc": 433,
+      "mem_free": 270,
+      "time_real": 891.958514,
+      "time_thread": 76.010257,
+      "type": "CAHitNtupletCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksCUDA99",
+      "mem_alloc": 832,
+      "mem_free": 283,
+      "time_real": 1199.446441,
+      "time_thread": 85.431483,
       "type": "CAHitNtupletCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksSoA0",
-      "mem_alloc": 158,
-      "mem_free": 40984,
-      "time_real": 40.756881,
-      "time_thread": 26.729979,
+      "mem_alloc": 361,
+      "mem_free": 82114,
+      "time_real": 254.041471,
+      "time_thread": 69.530566,
       "type": "PixelTrackSoAFromCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksSoA1",
-      "mem_alloc": 163,
-      "mem_free": 40984,
-      "time_real": 45.0399,
-      "time_thread": 35.318394,
+      "mem_alloc": 370,
+      "mem_free": 82122,
+      "time_real": 221.835826,
+      "time_thread": 68.997345,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA10",
+      "mem_alloc": 367,
+      "mem_free": 82112,
+      "time_real": 399.340761,
+      "time_thread": 72.211822,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA11",
+      "mem_alloc": 367,
+      "mem_free": 82110,
+      "time_real": 397.730071,
+      "time_thread": 70.934682,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA12",
+      "mem_alloc": 356,
+      "mem_free": 82099,
+      "time_real": 468.262265,
+      "time_thread": 71.613577,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA13",
+      "mem_alloc": 360,
+      "mem_free": 82103,
+      "time_real": 446.905223,
+      "time_thread": 70.804062,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA14",
+      "mem_alloc": 359,
+      "mem_free": 82103,
+      "time_real": 526.768838,
+      "time_thread": 72.045019,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA15",
+      "mem_alloc": 370,
+      "mem_free": 82111,
+      "time_real": 328.501847,
+      "time_thread": 70.038971,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA16",
+      "mem_alloc": 399,
+      "mem_free": 82137,
+      "time_real": 339.827431,
+      "time_thread": 70.703687,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA17",
+      "mem_alloc": 371,
+      "mem_free": 82113,
+      "time_real": 527.355895,
+      "time_thread": 71.156824,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA18",
+      "mem_alloc": 377,
+      "mem_free": 82120,
+      "time_real": 410.707184,
+      "time_thread": 70.245437,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA19",
+      "mem_alloc": 363,
+      "mem_free": 82106,
+      "time_real": 494.05778,
+      "time_thread": 71.163157,
       "type": "PixelTrackSoAFromCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksSoA2",
-      "mem_alloc": 166,
-      "mem_free": 40984,
-      "time_real": 50.156704,
-      "time_thread": 34.430345,
+      "mem_alloc": 339,
+      "mem_free": 82095,
+      "time_real": 278.924212,
+      "time_thread": 68.499189,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA20",
+      "mem_alloc": 349,
+      "mem_free": 82096,
+      "time_real": 498.771684,
+      "time_thread": 71.040363,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA21",
+      "mem_alloc": 366,
+      "mem_free": 82112,
+      "time_real": 555.300832,
+      "time_thread": 71.910227,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA22",
+      "mem_alloc": 359,
+      "mem_free": 82103,
+      "time_real": 387.354853,
+      "time_thread": 71.008898,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA23",
+      "mem_alloc": 380,
+      "mem_free": 82121,
+      "time_real": 412.345393,
+      "time_thread": 70.739609,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA24",
+      "mem_alloc": 359,
+      "mem_free": 82103,
+      "time_real": 430.522303,
+      "time_thread": 71.022029,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA25",
+      "mem_alloc": 374,
+      "mem_free": 82116,
+      "time_real": 255.694963,
+      "time_thread": 69.597214,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA26",
+      "mem_alloc": 365,
+      "mem_free": 82112,
+      "time_real": 370.415538,
+      "time_thread": 69.537295,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA27",
+      "mem_alloc": 357,
+      "mem_free": 82102,
+      "time_real": 358.442082,
+      "time_thread": 70.293276,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA28",
+      "mem_alloc": 354,
+      "mem_free": 82101,
+      "time_real": 356.235738,
+      "time_thread": 70.077137,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA29",
+      "mem_alloc": 334,
+      "mem_free": 82080,
+      "time_real": 489.12973,
+      "time_thread": 70.658573,
       "type": "PixelTrackSoAFromCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksSoA3",
-      "mem_alloc": 167,
-      "mem_free": 40984,
-      "time_real": 70.67723,
-      "time_thread": 34.506678,
+      "mem_alloc": 367,
+      "mem_free": 82112,
+      "time_real": 292.74213,
+      "time_thread": 72.887322,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA30",
+      "mem_alloc": 362,
+      "mem_free": 82105,
+      "time_real": 456.094504,
+      "time_thread": 70.467909,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA31",
+      "mem_alloc": 353,
+      "mem_free": 82097,
+      "time_real": 490.210048,
+      "time_thread": 71.058899,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA32",
+      "mem_alloc": 378,
+      "mem_free": 82116,
+      "time_real": 370.970321,
+      "time_thread": 71.227867,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA33",
+      "mem_alloc": 359,
+      "mem_free": 82101,
+      "time_real": 329.133793,
+      "time_thread": 70.986005,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA34",
+      "mem_alloc": 338,
+      "mem_free": 82086,
+      "time_real": 452.352388,
+      "time_thread": 70.951721,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA35",
+      "mem_alloc": 362,
+      "mem_free": 82104,
+      "time_real": 529.338405,
+      "time_thread": 71.151453,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA36",
+      "mem_alloc": 343,
+      "mem_free": 82088,
+      "time_real": 449.557482,
+      "time_thread": 71.182515,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA37",
+      "mem_alloc": 350,
+      "mem_free": 82095,
+      "time_real": 516.847806,
+      "time_thread": 70.965807,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA38",
+      "mem_alloc": 362,
+      "mem_free": 82104,
+      "time_real": 276.632846,
+      "time_thread": 69.772876,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA39",
+      "mem_alloc": 351,
+      "mem_free": 82094,
+      "time_real": 387.884623,
+      "time_thread": 70.946541,
       "type": "PixelTrackSoAFromCUDAPhase1"
     },
     {
       "events": 100,
       "label": "pixelTracksSoA4",
-      "mem_alloc": 166,
-      "mem_free": 40985,
-      "time_real": 57.70366,
-      "time_thread": 35.09137,
+      "mem_alloc": 380,
+      "mem_free": 82126,
+      "time_real": 341.808722,
+      "time_thread": 74.697079,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA40",
+      "mem_alloc": 333,
+      "mem_free": 82081,
+      "time_real": 581.089753,
+      "time_thread": 71.406298,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA41",
+      "mem_alloc": 357,
+      "mem_free": 82101,
+      "time_real": 566.239353,
+      "time_thread": 71.482281,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA42",
+      "mem_alloc": 378,
+      "mem_free": 82117,
+      "time_real": 382.083045,
+      "time_thread": 70.259445,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA43",
+      "mem_alloc": 352,
+      "mem_free": 82096,
+      "time_real": 421.228254,
+      "time_thread": 71.40924,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA44",
+      "mem_alloc": 341,
+      "mem_free": 82086,
+      "time_real": 345.474699,
+      "time_thread": 71.106459,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA45",
+      "mem_alloc": 343,
+      "mem_free": 82088,
+      "time_real": 759.436863,
+      "time_thread": 71.753328,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA46",
+      "mem_alloc": 334,
+      "mem_free": 82082,
+      "time_real": 486.197843,
+      "time_thread": 71.25088,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA47",
+      "mem_alloc": 358,
+      "mem_free": 82100,
+      "time_real": 371.810659,
+      "time_thread": 70.47995,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA48",
+      "mem_alloc": 350,
+      "mem_free": 82095,
+      "time_real": 521.320572,
+      "time_thread": 70.981666,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA49",
+      "mem_alloc": 357,
+      "mem_free": 82098,
+      "time_real": 339.759441,
+      "time_thread": 70.646143,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA5",
+      "mem_alloc": 378,
+      "mem_free": 82121,
+      "time_real": 332.925847,
+      "time_thread": 73.02547,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA50",
+      "mem_alloc": 343,
+      "mem_free": 82087,
+      "time_real": 447.198978,
+      "time_thread": 71.261902,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA51",
+      "mem_alloc": 353,
+      "mem_free": 82095,
+      "time_real": 496.969292,
+      "time_thread": 70.602455,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA52",
+      "mem_alloc": 346,
+      "mem_free": 82089,
+      "time_real": 558.605448,
+      "time_thread": 71.802114,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA53",
+      "mem_alloc": 358,
+      "mem_free": 82098,
+      "time_real": 543.157356,
+      "time_thread": 71.550101,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA54",
+      "mem_alloc": 339,
+      "mem_free": 82085,
+      "time_real": 392.028278,
+      "time_thread": 70.618875,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA55",
+      "mem_alloc": 344,
+      "mem_free": 82086,
+      "time_real": 467.790082,
+      "time_thread": 70.635583,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA56",
+      "mem_alloc": 345,
+      "mem_free": 82089,
+      "time_real": 527.192741,
+      "time_thread": 70.861504,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA57",
+      "mem_alloc": 340,
+      "mem_free": 82082,
+      "time_real": 505.00837,
+      "time_thread": 70.413422,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA58",
+      "mem_alloc": 345,
+      "mem_free": 82085,
+      "time_real": 559.646416,
+      "time_thread": 71.388665,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA59",
+      "mem_alloc": 321,
+      "mem_free": 82070,
+      "time_real": 537.693538,
+      "time_thread": 70.342731,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA6",
+      "mem_alloc": 368,
+      "mem_free": 82114,
+      "time_real": 468.161769,
+      "time_thread": 75.720696,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA60",
+      "mem_alloc": 346,
+      "mem_free": 82086,
+      "time_real": 319.448715,
+      "time_thread": 69.884326,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA61",
+      "mem_alloc": 345,
+      "mem_free": 82084,
+      "time_real": 341.029171,
+      "time_thread": 69.889263,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA62",
+      "mem_alloc": 338,
+      "mem_free": 82080,
+      "time_real": 425.971615,
+      "time_thread": 70.125133,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA63",
+      "mem_alloc": 326,
+      "mem_free": 82072,
+      "time_real": 541.839993,
+      "time_thread": 70.840286,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA64",
+      "mem_alloc": 325,
+      "mem_free": 82072,
+      "time_real": 516.623729,
+      "time_thread": 70.575102,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA65",
+      "mem_alloc": 333,
+      "mem_free": 82077,
+      "time_real": 480.146702,
+      "time_thread": 70.076165,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA66",
+      "mem_alloc": 345,
+      "mem_free": 82085,
+      "time_real": 374.624949,
+      "time_thread": 70.407625,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA67",
+      "mem_alloc": 337,
+      "mem_free": 82081,
+      "time_real": 393.634725,
+      "time_thread": 70.338314,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA68",
+      "mem_alloc": 343,
+      "mem_free": 82087,
+      "time_real": 514.130936,
+      "time_thread": 71.984767,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA69",
+      "mem_alloc": 329,
+      "mem_free": 82073,
+      "time_real": 526.718774,
+      "time_thread": 71.104928,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA7",
+      "mem_alloc": 345,
+      "mem_free": 82092,
+      "time_real": 467.217972,
+      "time_thread": 73.554466,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA70",
+      "mem_alloc": 337,
+      "mem_free": 82080,
+      "time_real": 622.202572,
+      "time_thread": 72.408662,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA71",
+      "mem_alloc": 336,
+      "mem_free": 82078,
+      "time_real": 428.226975,
+      "time_thread": 70.290142,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA72",
+      "mem_alloc": 325,
+      "mem_free": 82071,
+      "time_real": 286.870103,
+      "time_thread": 70.028044,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA73",
+      "mem_alloc": 330,
+      "mem_free": 82076,
+      "time_real": 426.290367,
+      "time_thread": 70.488289,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA74",
+      "mem_alloc": 327,
+      "mem_free": 82071,
+      "time_real": 430.088018,
+      "time_thread": 72.037162,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA75",
+      "mem_alloc": 321,
+      "mem_free": 82067,
+      "time_real": 493.784232,
+      "time_thread": 71.118006,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA76",
+      "mem_alloc": 319,
+      "mem_free": 82064,
+      "time_real": 495.844379,
+      "time_thread": 71.199626,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA77",
+      "mem_alloc": 330,
+      "mem_free": 82071,
+      "time_real": 336.792449,
+      "time_thread": 69.808124,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA78",
+      "mem_alloc": 319,
+      "mem_free": 82065,
+      "time_real": 413.810112,
+      "time_thread": 69.921468,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA79",
+      "mem_alloc": 329,
+      "mem_free": 82073,
+      "time_real": 486.316593,
+      "time_thread": 70.765659,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA8",
+      "mem_alloc": 387,
+      "mem_free": 82128,
+      "time_real": 537.268142,
+      "time_thread": 75.179526,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA80",
+      "mem_alloc": 319,
+      "mem_free": 82065,
+      "time_real": 341.930537,
+      "time_thread": 70.151937,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA81",
+      "mem_alloc": 327,
+      "mem_free": 82070,
+      "time_real": 524.544153,
+      "time_thread": 71.165031,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA82",
+      "mem_alloc": 331,
+      "mem_free": 82072,
+      "time_real": 456.969501,
+      "time_thread": 70.650768,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA83",
+      "mem_alloc": 320,
+      "mem_free": 82066,
+      "time_real": 431.895425,
+      "time_thread": 70.511978,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA84",
+      "mem_alloc": 316,
+      "mem_free": 82060,
+      "time_real": 563.522021,
+      "time_thread": 70.920561,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA85",
+      "mem_alloc": 316,
+      "mem_free": 82057,
+      "time_real": 461.308854,
+      "time_thread": 71.169589,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA86",
+      "mem_alloc": 313,
+      "mem_free": 82055,
+      "time_real": 648.833389,
+      "time_thread": 71.852536,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA87",
+      "mem_alloc": 312,
+      "mem_free": 82056,
+      "time_real": 363.574861,
+      "time_thread": 70.351072,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA88",
+      "mem_alloc": 306,
+      "mem_free": 82050,
+      "time_real": 353.950625,
+      "time_thread": 70.69108,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA89",
+      "mem_alloc": 309,
+      "mem_free": 82052,
+      "time_real": 552.3219,
+      "time_thread": 70.683049,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA9",
+      "mem_alloc": 389,
+      "mem_free": 82127,
+      "time_real": 260.830312,
+      "time_thread": 72.882336,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA90",
+      "mem_alloc": 309,
+      "mem_free": 82051,
+      "time_real": 507.851564,
+      "time_thread": 70.788699,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA91",
+      "mem_alloc": 300,
+      "mem_free": 82045,
+      "time_real": 550.060156,
+      "time_thread": 71.565764,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA92",
+      "mem_alloc": 305,
+      "mem_free": 82048,
+      "time_real": 425.015862,
+      "time_thread": 71.125095,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA93",
+      "mem_alloc": 306,
+      "mem_free": 82048,
+      "time_real": 344.090248,
+      "time_thread": 70.627441,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA94",
+      "mem_alloc": 304,
+      "mem_free": 82046,
+      "time_real": 554.740249,
+      "time_thread": 71.371072,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA95",
+      "mem_alloc": 300,
+      "mem_free": 82043,
+      "time_real": 416.515757,
+      "time_thread": 70.418193,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA96",
+      "mem_alloc": 300,
+      "mem_free": 82044,
+      "time_real": 339.187702,
+      "time_thread": 71.003401,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA97",
+      "mem_alloc": 303,
+      "mem_free": 82045,
+      "time_real": 496.634255,
+      "time_thread": 71.62,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA98",
+      "mem_alloc": 301,
+      "mem_free": 82045,
+      "time_real": 380.873398,
+      "time_thread": 70.320434,
+      "type": "PixelTrackSoAFromCUDAPhase1"
+    },
+    {
+      "events": 100,
+      "label": "pixelTracksSoA99",
+      "mem_alloc": 305,
+      "mem_free": 82048,
+      "time_real": 498.716628,
+      "time_thread": 71.398804,
       "type": "PixelTrackSoAFromCUDAPhase1"
     },
     {
@@ -408,10 +3828,10 @@
     {
       "events": 100,
       "label": "siPixelClustersPreSplittingCUDA",
-      "mem_alloc": 16410,
-      "mem_free": 7828,
-      "time_real": 63.070772,
-      "time_thread": 40.161464,
+      "mem_alloc": 32452,
+      "mem_free": 15390,
+      "time_real": 994.044173,
+      "time_thread": 94.233354,
       "type": "SiPixelRawToClusterCUDA"
     },
     {
@@ -444,19 +3864,19 @@
     {
       "events": 100,
       "label": "siPixelDigisClustersPreSplitting",
-      "mem_alloc": 49805,
-      "mem_free": 25683,
-      "time_real": 108.458438,
-      "time_thread": 107.965969,
+      "mem_alloc": 49808,
+      "mem_free": 25686,
+      "time_real": 146.41458,
+      "time_thread": 141.703108,
       "type": "SiPixelDigisClustersFromSoAPhase1"
     },
     {
       "events": 100,
       "label": "siPixelDigisSoA",
-      "mem_alloc": 6862,
-      "mem_free": 36,
-      "time_real": 10.116139,
-      "time_thread": 6.742202,
+      "mem_alloc": 6978,
+      "mem_free": 173,
+      "time_real": 176.210198,
+      "time_thread": 12.298877,
       "type": "SiPixelDigisSoAFromCUDA"
     },
     {
@@ -480,10 +3900,10 @@
     {
       "events": 100,
       "label": "siPixelRecHitsPreSplittingCUDA",
-      "mem_alloc": 124,
-      "mem_free": 45,
-      "time_real": 13.139877,
-      "time_thread": 8.262349,
+      "mem_alloc": 165,
+      "mem_free": 60,
+      "time_real": 946.860362,
+      "time_thread": 17.732317,
       "type": "SiPixelRecHitCUDAPhase1"
     },
     {
@@ -498,10 +3918,10 @@
     {
       "events": 100,
       "label": "other",
-      "mem_alloc": 4107,
-      "mem_free": 324635,
-      "time_real": 13806.493948,
-      "time_thread": 376.884151,
+      "mem_alloc": 19263,
+      "mem_free": 2423816,
+      "time_real": 32626.018911,
+      "time_thread": 1501.246163,
       "type": "other"
     },
     {
@@ -509,8 +3929,8 @@
       "label": "eventsetup",
       "mem_alloc": 741880,
       "mem_free": 572876,
-      "time_real": 1885.702861,
-      "time_thread": 1826.378779,
+      "time_real": 2013.567224,
+      "time_thread": 1969.472049,
       "type": "eventsetup"
     }
   ],
@@ -531,10 +3951,10 @@
   "total": {
     "events": 100,
     "label": "RECO",
-    "mem_alloc": 2224389,
-    "mem_free": 2203006,
-    "time_real": 23008.420587,
-    "time_thread": 4116.07957,
+    "mem_alloc": 8230594,
+    "mem_free": 15832699,
+    "time_real": 210313.484108,
+    "time_thread": 31354.790037,
     "type": "Job"
   }
 }
