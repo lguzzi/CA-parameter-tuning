@@ -1,21 +1,7 @@
 import numpy as np
-import csv
 import subprocess
+from utils import get_metrics, write_csv
 import uproot
-
-def get_metrics(uproot_file, id):
-    tree = uproot_file['simpleValidation' + str(id)]['output']
-    total_rec = tree['rt'].array()[0]
-    total_ass = tree['at'].array()[0]
-    total_sim = tree['st'].array()[0]
-    
-    return [total_sim / total_ass, (total_rec - total_ass) / total_rec]
-
-def write_csv(filename, matrix):
-    with open(filename, 'w', newline='') as csv_file:
-        writer = csv.writer(csv_file)
-        for i in range(len(matrix)):
-            writer.writerow(matrix[i]) 
 
 class Particle:
     def __init__(self, lb=-10, ub=10, num_objectives=2):
@@ -59,13 +45,7 @@ class PSO:
         self.global_best_position = np.zeros_like(lb)
         self.global_best_fitness = [np.inf, np.inf] #TODO: you can improve it to be a list of size num_objectives
         self.history = []
-        write_csv('parameters.csv', [self.particles[i].position for i in range(self.num_particles)])
-            
-    # def write_params(self, filename):
-    #     with open(filename, 'w', newline='') as csvFile:
-    #         writer = csv.writer(csvFile)
-    #         for i in range(self.num_particles):
-    #             writer.writerow(self.particles[i].position)     
+        write_csv('parameters.csv', [self.particles[i].position for i in range(self.num_particles)])   
 
     def optimize(self):
         uproot_file = None
