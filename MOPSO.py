@@ -8,8 +8,8 @@ class Particle:
         self.position = np.random.uniform(lb, ub)
         self.velocity = np.zeros_like(self.position)
         self.best_position = self.position
-        self.best_fitness = [np.inf] * num_objectives #inf for minimization
-        self.fitness = [np.inf] * num_objectives
+        self.best_fitness = [1.0] * num_objectives #inf for minimization
+        self.fitness = [1.0] * num_objectives
 
     def update_velocity(self, global_best_position, w=0.5, c1=1, c2=1):
         r1 = np.random.uniform(0, 1)
@@ -24,7 +24,11 @@ class Particle:
     def evaluate_fitness(self, uproot_file, id):
         self.fitness = np.array(get_metrics(uproot_file, id))
         
-        if any(self.fitness < self.best_fitness):
+        # sometimes tracks overflow happens which leads to perfect fitness but the result is actually bad
+        if self.best_fitness[0] == 0 or self.best_fitness[1] == 0:
+            self.fitness = np.array([1.0, 1.0])
+            
+        if all(self.fitness < self.best_fitness):
             self.best_fitness = self.fitness
             self.best_position = self.position
 
@@ -43,7 +47,7 @@ class PSO:
         self.num_objectives = num_objectives
         self.particles = [Particle(lb, ub) for _ in range(num_particles)]
         self.global_best_position = np.zeros_like(lb)
-        self.global_best_fitness = [np.inf, np.inf] #TODO: you can improve it to be a list of size num_objectives
+        self.global_best_fitness = np.array([1.0, 1.0]) #TODO: you can improve it to be a list of size num_objectives
         self.history = []
         write_csv('parameters.csv', [self.particles[i].position for i in range(self.num_particles)])   
 
@@ -61,9 +65,6 @@ class PSO:
                     self.global_best_fitness = particle.fitness
                     self.global_best_position = particle.position
 
-                self.update_particle_best(particle)
-                self.update_global_best()
-
                 particle.update_velocity(self.global_best_position, self.w, self.c1, self.c2)
                 particle.update_position(self.lb, self.ub)
                 
@@ -76,17 +77,6 @@ class PSO:
         write_csv('history/history.csv', self.history)
         write_csv('history/pareto_front.csv', [np.concatenate([pareto_front[i].position, pareto_front[i].fitness]) 
                                                for i in range(len(pareto_front))])
-
-    def update_particle_best(self, particle):
-        if any(particle.fitness < particle.best_fitness):
-            particle.best_fitness = particle.fitness
-            particle.best_position = particle.position
-
-    def update_global_best(self):
-        for particle in self.particles:
-            if all(particle.fitness <= self.global_best_fitness):
-                self.global_best_fitness = particle.fitness
-                self.global_best_position = particle.position
 
     def get_pareto_front(self):
         pareto_front = []
@@ -116,11 +106,3 @@ class PSO:
                     pareto_front_sorted[i-1].fitness[objective_index]
                 )
         return crowding_distances
-
-
-
-
-
-
-
-
