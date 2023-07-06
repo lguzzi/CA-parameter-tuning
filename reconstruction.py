@@ -14,14 +14,14 @@ from Configuration.ProcessModifiers.gpu_cff import gpu
 from FWCore.ParameterSet.VarParsing import VarParsing
 
 # VarParsing instance
-options = VarParsing()
+options = VarParsing('analysis')
 
 # Custom options
-options.register ('outputFileName',
-              "output.root",
+options.register ('parametersFile',
+              "parameters.csv",
               VarParsing.multiplicity.singleton,
               VarParsing.varType.string,
-              "outputFileName")
+              "Name of parameters file")
 # options.register ('CAThetaCutForward',
 #               0.004,
 #               VarParsing.multiplicity.singleton,
@@ -63,7 +63,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('file:step2.root'),
+    fileNames = cms.untracked.vstring(options.inputFiles),
     secondaryFileNames = cms.untracked.vstring()
 )
 
@@ -119,12 +119,12 @@ from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '')
 process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
 process.FastTimerService.jsonFileName = cms.untracked.string('times.json')
-process.TFileService = cms.Service("TFileService", fileName = cms.string(options.outputFileName))
+process.TFileService = cms.Service("TFileService", fileName = cms.string(options.outputFile))
 
 
 # Create multiple reconstruction and validation objects with parameters in parameters.csv
 totalTasks = 0
-with open("parameters.csv", "r") as f:
+with open(options.parametersFile, "r") as f:
     csv_reader = reader(f)
     for i, row in enumerate(csv_reader):
         totalTasks += 1
