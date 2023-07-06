@@ -56,7 +56,7 @@ class PSO:
         for i in range(self.num_iterations):
             write_csv('history/parameters/iteration' + str(i) + '.csv', [self.particles[i].position for i in range(self.num_particles)])
             validation_result = "history/validation/iteration" + str(i) + ".root"
-            subprocess.run(['cmsRun','reconstruction.py', "outputFileName=" + validation_result])
+            subprocess.run(['cmsRun','reconstruction.py', "inputFiles=file:step2.root", "parametersFile=parameters.csv", "outputFile=" + validation_result])
             for j, particle in enumerate(self.particles):
                 uproot_file = uproot.open(validation_result)
                 particle.evaluate_fitness(uproot_file, j)
