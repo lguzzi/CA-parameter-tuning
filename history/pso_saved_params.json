@@ -1,0 +1,21 @@
+{
+    "lb": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "ub": [
+        0.006,
+        0.03,
+        0.2,
+        1.0
+    ],
+    "num_objectives": 2,
+    "num_particles": 200,
+    "w": 0.5,
+    "c1": 1,
+    "c2": 1,
+    "max_iter_no_improv": null,
+    "tol": null
+}

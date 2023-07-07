@@ -1,15 +1,26 @@
 import numpy as np
 import subprocess
-from utils import get_metrics, write_csv
+import os
+from utils import get_metrics, write_csv, read_csv
 import uproot
+import json
 
 class Particle:
-    def __init__(self, lb=-10, ub=10, num_objectives=2):
-        self.position = np.random.uniform(lb, ub)
-        self.velocity = np.zeros_like(self.position)
-        self.best_position = self.position
-        self.best_fitness = [1.0] * num_objectives #inf for minimization
-        self.fitness = [1.0] * num_objectives
+    def __init__(self, lb=-10, ub=10, num_objectives=2, velocity=None, position=None, 
+                 best_position=None, best_fitness=None):
+        self.num_objectives = num_objectives
+        if position is not None:
+            self.velocity = velocity
+            self.position = position
+            self.fitness = None
+            self.best_position = best_position
+            self.best_fitness = best_fitness
+        else:
+            self.position = np.random.uniform(lb, ub)
+            self.velocity = np.zeros_like(self.position)
+            self.best_position = self.position
+            self.best_fitness = np.ones(num_objectives) #inf for minimization
+            self.fitness = np.ones(num_objectives)
 
     def update_velocity(self, global_best_position, w=0.5, c1=1, c2=1):
         r1 = np.random.uniform(0, 1)
@@ -26,7 +37,7 @@ class Particle:
         
         # sometimes tracks overflow happens which leads to perfect fitness but the result is actually bad
         if self.best_fitness[0] == 0 or self.best_fitness[1] == 0:
-            self.fitness = np.array([1.0, 1.0])
+            self.fitness = np.ones(self.num_objectives)
             
         if all(self.fitness < self.best_fitness):
             self.best_fitness = self.fitness
@@ -34,63 +45,124 @@ class Particle:
 
 class PSO:
     def __init__(self, lb, ub, num_objectives=2, num_particles=50, w=0.5, c1=1, c2=1, 
-                 num_iterations=100, max_iter_no_improv=None, tol=None):
-        self.num_particles = num_particles
-        self.lb = lb
-        self.ub = ub
-        self.w = w
-        self.c1 = c1
-        self.c2 = c2
-        self.num_iterations = num_iterations
-        self.max_iter_no_improv = max_iter_no_improv
-        self.tol = tol
-        self.num_objectives = num_objectives
-        self.particles = [Particle(lb, ub) for _ in range(num_particles)]
-        self.global_best_position = np.zeros_like(lb)
-        self.global_best_fitness = np.array([1.0, 1.0]) #TODO: you can improve it to be a list of size num_objectives
-        self.history = []
-        write_csv('parameters.csv', [self.particles[i].position for i in range(self.num_particles)])   
-
+                 num_iterations=100, continuing=False, max_iter_no_improv=None, tol=None):
+        if not continuing:
+            self.lb = lb
+            self.ub = ub
+            self.num_objectives = num_objectives
+            self.num_particles = num_particles
+            self.w = w
+            self.c1 = c1
+            self.c2 = c2
+            self.num_iterations = num_iterations
+            self.max_iter_no_improv = max_iter_no_improv
+            self.tol = tol
+            self.particles = [Particle(lb, ub) for _ in range(num_particles)]
+            self.global_best_position = np.zeros_like(lb)
+            self.global_best_fitness = np.ones(num_objectives)
+            self.iteration = 0
+            write_csv('parameters.csv', [self.particles[i].position for i in range(self.num_particles)])
+            saved_params = {
+                "lb": self.lb,
+                "ub": self.ub,
+                "num_objectives": self.num_objectives,
+                "num_particles": self.num_particles,
+                "w": self.w,
+                "c1": self.c1,
+                "c2": self.c2,
+                "max_iter_no_improv": self.max_iter_no_improv,
+                "tol": self.tol,
+            }
+            with open('history/pso_saved_params.json', 'w') as f:
+                json.dump(saved_params, f, indent=4)
+        else:
+            with open('history/pso_saved_params.json') as f:
+                saved_params = json.load(f)
+            self.lb = saved_params["lb"]
+            self.ub = saved_params["ub"]
+            self.num_objectives = saved_params["num_objectives"]
+            self.num_particles = saved_params["num_particles"]
+            self.w = saved_params["w"]
+            self.c1 = saved_params["c1"]
+            self.c2 = saved_params["c2"]
+            self.num_iterations = num_iterations
+            self.max_iter_no_improv = max_iter_no_improv
+            self.tol = saved_params["tol"]
+            num_params = len(self.lb)
+            global_state = read_csv('history/global_state.csv')[0]
+            self.global_best_position = np.array(global_state[:num_params], dtype=float)
+            self.global_best_fitness = np.array(global_state[num_params:-1], dtype=float)
+            self.iteration = int(global_state[-1])
+            individual_states = read_csv('history/individual_states.csv')
+            self.particles = [Particle(
+                                lb=self.lb, 
+                                ub=self.ub, 
+                                num_objectives=self.num_objectives,
+                                position=np.array(individual_states[i][:num_params], dtype=float),
+                                velocity=np.array(individual_states[i][num_params:2*num_params], dtype=float),
+                                best_position=np.array(individual_states[i][2*num_params:3*num_params], dtype=float),
+                                best_fitness=np.array(individual_states[i][3*num_params:], dtype=float)
+                             ) for i in range(self.num_particles)]
+            
     def optimize(self):
         uproot_file = None
+        # clear old data, probably not the best way to do this
+        if not self.iteration:
+            os.system("rm -rf history/parameters/*")
+            os.system("rm -rf history/validation/*")
+            os.system("rm -rf history/pareto_front/*")
+            
         for i in range(self.num_iterations):
-            write_csv('history/parameters/iteration' + str(i) + '.csv', [self.particles[i].position for i in range(self.num_particles)])
-            validation_result = "history/validation/iteration" + str(i) + ".root"
+            # save tracking parameters
+            write_csv('history/parameters/iteration' + str(self.iteration) + '.csv', 
+                      [self.particles[i].position for i in range(self.num_particles)])
+            
+            # run reconstruction and validate tracks
+            validation_result = "history/validation/iteration" + str(self.iteration) + ".root"
             subprocess.run(['cmsRun','reconstruction.py', "inputFiles=file:step2.root", "parametersFile=parameters.csv", "outputFile=" + validation_result])
+            
+            # evaluate fitness and update velocity
             for j, particle in enumerate(self.particles):
                 uproot_file = uproot.open(validation_result)
                 particle.evaluate_fitness(uproot_file, j)
-
                 if all(particle.fitness < self.global_best_fitness): 
                     self.global_best_fitness = particle.fitness
                     self.global_best_position = particle.position
-
                 particle.update_velocity(self.global_best_position, self.w, self.c1, self.c2)
-                particle.update_position(self.lb, self.ub)
-                
             uproot_file.close()
-            write_csv('parameters.csv', [self.particles[i].position for i in range(self.num_particles)])
-            self.history.append(np.concatenate([self.global_best_position, self.global_best_fitness]))
+                
+            # save current pareto front
+            pareto_front = self.get_pareto_front()
+            write_csv('history/pareto_front/iteration' + str(self.iteration) + '.csv', 
+                      [np.concatenate([pareto_front[i].position, pareto_front[i].fitness]) for i in range(len(pareto_front))])  
 
-        pareto_front = self.get_pareto_front()
-        
-        write_csv('history/history.csv', self.history)
-        write_csv('history/pareto_front.csv', [np.concatenate([pareto_front[i].position, pareto_front[i].fitness]) 
-                                               for i in range(len(pareto_front))])
+            # update positions
+            for j, particle in enumerate(self.particles):
+                particle.update_position(self.lb, self.ub)
+            write_csv('parameters.csv', [self.particles[i].position for i in range(self.num_particles)])
+            
+            # save states of particles
+            write_csv('history/individual_states.csv', 
+                      [np.concatenate([particle.position, particle.velocity, particle.best_position, particle.best_fitness]) 
+                       for particle in self.particles])
+
+            # save global state
+            self.iteration += 1
+            write_csv('history/global_state.csv', [np.concatenate([self.global_best_position, self.global_best_fitness, [self.iteration]])])
 
     def get_pareto_front(self):
         pareto_front = []
         for particle in self.particles:
             dominated = False
             for other_particle in self.particles:
-                if all(particle.fitness >= other_particle.fitness) and any(particle.fitness > other_particle.fitness):
+                if all(particle.fitness > other_particle.fitness):
                     dominated = True
                     break
             if not dominated:
                 pareto_front.append(particle)
         # Sort the Pareto front by crowding distance
-        crowding_distances = self.calculate_crowding_distance(pareto_front)
-        pareto_front.sort(key=lambda x: crowding_distances[x], reverse=True)
+        # crowding_distances = self.calculate_crowding_distance(pareto_front)
+        # pareto_front.sort(key=lambda x: crowding_distances[x], reverse=True)
         return pareto_front
 
     def calculate_crowding_distance(self, pareto_front):
