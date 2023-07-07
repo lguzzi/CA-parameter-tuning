@@ -102,12 +102,13 @@ class PSO:
                                 velocity=np.array(individual_states[i][num_params:2*num_params], dtype=float),
                                 best_position=np.array(individual_states[i][2*num_params:3*num_params], dtype=float),
                                 best_fitness=np.array(individual_states[i][3*num_params:], dtype=float)
-                             ) for i in range(self.num_particles)]
+                              ) for i in range(self.num_particles)]
             
     def optimize(self):
         uproot_file = None
+        all_time_pareto_front = None
         # clear old data, probably not the best way to do this
-        if not self.iteration:
+        if not self.continuing:
             os.system("rm -rf history/parameters/*")
             os.system("rm -rf history/validation/*")
             os.system("rm -rf history/pareto_front/*")
@@ -119,7 +120,8 @@ class PSO:
             
             # run reconstruction and validate tracks
             validation_result = "history/validation/iteration" + str(self.iteration) + ".root"
-            subprocess.run(['cmsRun','reconstruction.py', "inputFiles=file:step2.root", "parametersFile=parameters.csv", "outputFile=" + validation_result])
+            subprocess.run(['cmsRun','reconstruction.py', "inputFiles=file:step2.root", 
+                            "parametersFile=parameters.csv", "outputFile=" + validation_result])
             
             # evaluate fitness and update velocity
             for j, particle in enumerate(self.particles):
@@ -134,7 +136,11 @@ class PSO:
             # save current pareto front
             pareto_front = self.get_pareto_front()
             write_csv('history/pareto_front/iteration' + str(self.iteration) + '.csv', 
-                      [np.concatenate([pareto_front[i].position, pareto_front[i].fitness]) for i in range(len(pareto_front))])  
+                      [np.concatenate([pareto_front[i].position, pareto_front[i].fitness]) 
+                       for i in range(len(pareto_front))])  
+            
+            # update all-time pareto front
+            all_time_pareto_front = self.update_all_time_pareto_front(all_time_pareto_front, pareto_front)
 
             # update positions
             for j, particle in enumerate(self.particles):
@@ -148,7 +154,12 @@ class PSO:
 
             # save global state
             self.iteration += 1
-            write_csv('history/global_state.csv', [np.concatenate([self.global_best_position, self.global_best_fitness, [self.iteration]])])
+            write_csv('history/global_state.csv', 
+                      [np.concatenate([self.global_best_position, self.global_best_fitness, [self.iteration]])])
+        
+        write_csv('history/all_time_pareto_front.csv', 
+            [np.concatenate([all_time_pareto_front[i].position, all_time_pareto_front[i].fitness]) 
+             for i in range(len(all_time_pareto_front))]) 
 
     def get_pareto_front(self):
         pareto_front = []
@@ -164,6 +175,23 @@ class PSO:
         # crowding_distances = self.calculate_crowding_distance(pareto_front)
         # pareto_front.sort(key=lambda x: crowding_distances[x], reverse=True)
         return pareto_front
+    
+    def update_all_time_pareto_front(self, all_time_pareto_front, pareto_front):
+        if not all_time_pareto_front:
+            return pareto_front
+        
+        pareto_front += all_time_pareto_front
+        new_all_time_pareto_front = []
+        for particle in pareto_front:
+            dominated = False
+            for other_particle in pareto_front:
+                if all(particle.fitness > other_particle.fitness):
+                    dominated = True
+                    break
+            if not dominated:
+                new_all_time_pareto_front.append(particle)
+        return new_all_time_pareto_front
+        
 
     def calculate_crowding_distance(self, pareto_front):
         crowding_distances = {particle: 0 for particle in pareto_front}
