@@ -16,7 +16,7 @@ def get_metrics(uproot_file, id):
 # read a csv file, return a matrix
 def read_csv(filename):
     with open(filename, 'r') as f:
-        return np.asarray(list(csv.reader(f)), dtype="float32")
+        return np.array(list(csv.reader(f)), dtype=float)
     
 # write a matrix to a csv file
 def write_csv(filename, matrix):

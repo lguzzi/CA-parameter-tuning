@@ -6,13 +6,13 @@ import uproot
 import json
 
 class Particle:
-    def __init__(self, lb=-10, ub=10, num_objectives=2, velocity=None, position=None, 
+    def __init__(self, lb=-10, ub=10, num_objectives=2, velocity=None, position=None, fitness=None, 
                  best_position=None, best_fitness=None):
         self.num_objectives = num_objectives
         if position is not None:
             self.velocity = velocity
             self.position = position
-            self.fitness = None
+            self.fitness = fitness
             self.best_position = best_position
             self.best_fitness = best_fitness
         else:
@@ -94,24 +94,32 @@ class PSO:
             self.global_best_fitness = np.array(global_state[num_params:-1], dtype=float)
             self.iteration = int(global_state[-1])
             individual_states = read_csv('history/individual_states.csv')
-            self.particles = [Particle(
-                                lb=self.lb, 
-                                ub=self.ub, 
-                                num_objectives=self.num_objectives,
-                                position=np.array(individual_states[i][:num_params], dtype=float),
-                                velocity=np.array(individual_states[i][num_params:2*num_params], dtype=float),
-                                best_position=np.array(individual_states[i][2*num_params:3*num_params], dtype=float),
-                                best_fitness=np.array(individual_states[i][3*num_params:], dtype=float)
-                              ) for i in range(self.num_particles)]
+            self.particles = [Particle(lb=self.lb,
+                                       ub=self.ub, 
+                                       num_objectives=self.num_objectives,
+                                       position=np.array(individual_states[i][:num_params], dtype=float),
+                                       velocity=np.array(individual_states[i][num_params:2*num_params], dtype=float),
+                                       best_position=np.array(individual_states[i][2*num_params:3*num_params], dtype=float),
+                                       best_fitness=np.array(individual_states[i][3*num_params:], dtype=float)
+                                       ) for i in range(self.num_particles)]
             
     def optimize(self):
         uproot_file = None
-        all_time_pareto_front = None
-        # clear old data, probably not the best way to do this
-        if not self.continuing:
+        if not self.iteration:
+            # clear old data, probably not the best way to do this
             os.system("rm -rf history/parameters/*")
             os.system("rm -rf history/validation/*")
             os.system("rm -rf history/pareto_front/*")
+            all_time_pareto_front = None
+        else:
+            # loading all-time pareto front
+            temp = read_csv('history/all_time_pareto_front.csv')
+            all_time_pareto_front = [Particle(lb=self.lb, 
+                                              ub=self.ub, 
+                                              num_objectives=self.num_objectives,
+                                              position=particle[:-self.num_objectives],
+                                              fitness=particle[-self.num_objectives:]
+                                              ) for particle in temp]
             
         for i in range(self.num_iterations):
             # save tracking parameters
