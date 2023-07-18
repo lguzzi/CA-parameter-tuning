@@ -1,4 +1,4 @@
-# *.root
+history/validation
 # *.csv
 # *.gif
 # params
@@ -6,3 +6,4 @@
 __pycache__
 # gifs
 step2.root
+full_validation/*.root
