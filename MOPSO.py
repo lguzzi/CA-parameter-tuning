@@ -123,10 +123,10 @@ class PSO:
             
             # save position and fitness
             write_csv('history/particles/iteration' + str(self.iteration) + '.csv', 
-                      [np.concatenate([particle.position, particle.best_fitness]) for particle in self.particles])
+                      [np.concatenate([particle.position, particle.fitness]) for particle in self.particles])
 
             # update positions
-            for j, particle in enumerate(self.particles):
+            for particle in self.particles:
                 particle.update_position(self.lb, self.ub)
                 
             # update input parameters for next iteration
