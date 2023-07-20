@@ -151,7 +151,9 @@ class PSO:
             for particle in particles:
                 dominated = False
                 for other_particle in particles:
-                    if all(particle[4:] > other_particle[4:]) or (particle[4] == other_particle[4] and particle[5] > other_particle[5]) or (particle[4] > other_particle[4] and particle[5] == other_particle[5]):
+                    if all(particle[4:] == other_particle[4:]):
+                        continue
+                    if all(particle[4:] >= other_particle[4:]):
                         dominated = True
                         break
                 if not dominated:
