@@ -19,8 +19,8 @@ class Particle:
             self.position = np.random.uniform(lb, ub)
             self.velocity = np.zeros_like(self.position)
             self.best_position = self.position
-            self.best_fitness = np.ones(num_objectives) #inf for minimization
-            self.fitness = np.ones(num_objectives)
+            self.best_fitness = np.ones(self.num_objectives) #inf for minimization
+            self.fitness = np.ones(self.num_objectives)
 
     def update_velocity(self, global_best_position, w=0.5, c1=1, c2=1):
         r1 = np.random.uniform(0, 1)
@@ -36,7 +36,7 @@ class Particle:
         self.fitness = np.array(get_metrics(uproot_file, id))
         
         # sometimes tracks overflow happens which leads to perfect fitness but the result is actually bad
-        if self.best_fitness[0] == 0 or self.best_fitness[1] == 0:
+        if any(self.best_fitness == np.zeros(self.num_objectives)):
             self.fitness = np.ones(self.num_objectives)
             
         if all(self.fitness <= self.best_fitness):
@@ -76,9 +76,9 @@ class PSO:
         
         if not continuing:
             self.num_iterations = num_iterations
-            self.particles = [Particle(lb, ub) for _ in range(num_particles)]
+            self.particles = [Particle(lb, ub, num_objectives=self.num_objectives) for _ in range(num_particles)]
             self.global_best_position = np.zeros_like(lb)
-            self.global_best_fitness = np.ones(num_objectives)
+            self.global_best_fitness = np.ones(self.num_objectives)
             self.iteration = 0
         else:
             self.num_iterations = num_iterations
@@ -147,7 +147,7 @@ class PSO:
     def get_pareto_front(self):
             pareto_front = []
             particles = np.concatenate([read_csv('history/particles/iteration' + str(i) + '.csv') 
-                                    for i in range(self.num_iterations)])
+                                    for i in range(self.iteration)])
             for particle in particles:
                 dominated = False
                 for other_particle in particles:
@@ -159,7 +159,7 @@ class PSO:
                 if not dominated:
                     pareto_front.append(particle)
             write_csv('history/pareto_front.csv', pareto_front)
-            return np.unique(pareto_front, axis=0)
+            return np.array(pareto_front)
 
     def calculate_crowding_distance(self, pareto_front):
         crowding_distances = {particle: 0 for particle in pareto_front}
