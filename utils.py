@@ -1,4 +1,3 @@
-import csv
 import numpy as np
 
 # calculate the metrics from validation results
@@ -17,12 +16,8 @@ def get_metrics(uproot_file, id):
 
 # read a csv file, return a matrix
 def read_csv(filename):
-    with open(filename, 'r') as f:
-        return np.array(list(csv.reader(f)), dtype=float)
+    return np.genfromtxt(filename, delimiter=",", dtype=float)
     
 # write a matrix to a csv file
 def write_csv(filename, matrix):
-    with open(filename, 'w', newline='') as csv_file:
-        writer = csv.writer(csv_file)
-        for i in range(len(matrix)):
-            writer.writerow(matrix[i]) 
+    np.savetxt(filename, matrix, delimiter=',')
