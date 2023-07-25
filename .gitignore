@@ -1,8 +1,2 @@
-# *.csv
-# *.gif
-# params
-# output
 __pycache__
-# gifs
-step2.root
-full_validation/*.root
+*.root
