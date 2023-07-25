@@ -108,7 +108,7 @@ class PSO:
         for i in range(self.num_iterations):
             # run reconstruction and validate tracks
             validation_result = "history/validation/iteration" + str(self.iteration) + ".root"
-            subprocess.run(['cmsRun','reconstruction.py', "inputFiles=file:step2.root", 
+            subprocess.run(['cmsRun','reconstruction.py', "inputFiles=file:full_validation/step2.root", 
                             "parametersFile=parameters.csv", "outputFile=" + validation_result])
             
             # evaluate fitness and update velocity

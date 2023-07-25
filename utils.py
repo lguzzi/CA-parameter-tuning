@@ -16,7 +16,10 @@ def get_metrics(uproot_file, id):
 
 # read a csv file, return a matrix
 def read_csv(filename):
-    return np.genfromtxt(filename, delimiter=",", dtype=float)
+    matrix = np.genfromtxt(filename, delimiter=",", dtype=float)
+    if matrix.ndim == 2:
+        return np.genfromtxt(filename, delimiter=",", dtype=float)
+    return np.array([matrix])
     
 # write a matrix to a csv file
 def write_csv(filename, matrix):
