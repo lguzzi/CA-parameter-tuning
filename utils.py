@@ -10,8 +10,8 @@ def get_metrics(uproot_file, id):
     total_sim = tree['st'].array()[0]
     
     if not total_ass or not total_rec or not total_sim or not total_ass_sim:
-        return [1.0, 1.0]
-
+        return [np.inf] * 2
+    
     return [1 - total_ass_sim / total_sim, (total_rec - total_ass + total_dup) / total_rec]
 
 # read a csv file, return a matrix

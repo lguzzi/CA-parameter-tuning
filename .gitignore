@@ -1,2 +1,6 @@
 __pycache__
 *.root
+/validation
+/history
+/parameters.csv
+/full_validation/plots

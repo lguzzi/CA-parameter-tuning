@@ -17,26 +17,23 @@ from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing('analysis')
 
 # Custom options
-options.register ('parametersFile',
-              "parameters.csv",
+options.register('parametersFile',
+              "default/default_params.csv",
               VarParsing.multiplicity.singleton,
               VarParsing.varType.string,
               "Name of parameters file")
-# options.register ('CAThetaCutForward',
-#               0.004,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "CAThetaCutForward")
-# options.register ('dcaCutInnerTriplet',
-#               0.16,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "dcaCutInnerTriplet")
-# options.register ('dcaCutOuterTriplet',
-#               0.26,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "dcaCutOuterTriplet")
+
+options.register('nEvents',
+              100,
+              VarParsing.multiplicity.singleton,
+              VarParsing.varType.int,
+              "Number of events")
+
+options.register('inputFile',
+              "file:input/step2.root",
+              VarParsing.multiplicity.singleton,
+              VarParsing.varType.string,
+              "Name of input file")
 
 options.parseArguments()
 
@@ -57,13 +54,13 @@ process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 process.load( "HLTrigger.Timer.FastTimerService_cfi" )
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(1000),
+    input = cms.untracked.int32(options.nEvents),
     output = cms.optional.untracked.allowed(cms.int32,cms.PSet)
 )
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring(options.inputFiles),
+    fileNames = cms.untracked.vstring(options.inputFile),
     secondaryFileNames = cms.untracked.vstring()
 )
 
@@ -101,7 +98,7 @@ process.options = cms.untracked.PSet(
 
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
-    annotation = cms.untracked.string('step3 nevts:1000'),
+    annotation = cms.untracked.string('step3 nevts:' + str(options.nEvents)),
     name = cms.untracked.string('Applications'),
     version = cms.untracked.string('$Revision: 1.19 $')
 )
@@ -117,9 +114,10 @@ for a in process.aliases: delattr(process, a)
 process.RandomNumberGeneratorService.restoreStateLabel=cms.untracked.string("randomEngineStateProducer")
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '')
-process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
-process.FastTimerService.jsonFileName = cms.untracked.string('times.json')
-process.TFileService = cms.Service("TFileService", fileName = cms.string(options.outputFile))
+# process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
+# process.FastTimerService.jsonFileName = cms.untracked.string('times.json')
+process.TFileService = cms.Service("TFileService", fileName=cms.string(options.outputFile) 
+                                   if cms.string(options.outputFile) else "default.root")
 
 
 # Create multiple reconstruction and validation objects with parameters in parameters.csv
