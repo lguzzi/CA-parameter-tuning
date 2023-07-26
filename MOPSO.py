@@ -9,7 +9,7 @@ class Particle:
         self.position = np.random.uniform(lb, ub)
         self.velocity = np.zeros_like(self.position)
         self.best_position = self.position
-        self.best_fitness = np.array([np.inf] * self.num_objectives) #inf for minimization
+        self.best_fitness = np.array([np.inf] * self.num_objectives)
         self.fitness = np.array([np.inf] * self.num_objectives)
     
     def set_state(self, velocity, position, best_position, best_fitness):
@@ -35,9 +35,9 @@ class Particle:
             self.best_position = self.position
 
 class PSO:
-    def __init__(self, fitness_function, lb, ub, num_objectives=2, num_particles=50, w=0.5, c1=1, c2=1, 
+    def __init__(self, objectives_function, lb, ub, num_objectives=2, num_particles=50, w=0.5, c1=1, c2=1, 
                  num_iterations=100, max_iter_no_improv=None, tol=None):
-        self.fitness_function = fitness_function    
+        self.objectives_function = objectives_function    
         self.lb = lb
         self.ub = ub
         self.num_objectives = num_objectives
@@ -49,16 +49,19 @@ class PSO:
         self.num_iterations = num_iterations
         self.max_iter_no_improv = max_iter_no_improv
         self.tol = tol
-        self.particles = [Particle(lb, ub, num_objectives=self.num_objectives) for _ in range(num_particles)]
+        self.particles = [Particle(self.lb, self.ub, num_objectives=self.num_objectives) for _ in range(num_particles)]
         self.global_best_position = np.zeros(self.num_params)
         self.global_best_fitness = np.array([np.inf] * self.num_objectives)
         self.iteration = 0
         
     def load_checkpoint(self, num_additional_iterations):
+        # load pso params and saved state
         with open('checkpoint/pso_params.json') as f:
             pso_params = json.load(f)
         global_state = read_csv('checkpoint/global_state.csv')[0]
         individual_states = read_csv('checkpoint/individual_states.csv')
+        
+        # assign pso params
         self.lb = pso_params["lb"]
         self.ub = pso_params["ub"]
         self.num_objectives = pso_params["num_objectives"]
@@ -69,8 +72,11 @@ class PSO:
         self.c2 = pso_params["c2"]
         self.max_iter_no_improv = pso_params["max_iter_no_improv"]
         self.tol = pso_params["tol"]
+        
+        # number of additional iterations to run
         self.num_iterations = num_additional_iterations
-        self.iteration = num_additional_iterations
+        
+        # recover saved state
         self.global_best_position = np.array(global_state[:self.num_params], dtype=float)
         self.global_best_fitness = np.array(global_state[self.num_params:-1], dtype=float)
         self.iteration = int(global_state[-1])
@@ -114,11 +120,8 @@ class PSO:
         
         # main pso loop
         for _ in range(self.num_iterations):
-            # params for current iteration
-            write_csv('parameters.csv', [particle.position for particle in self.particles])
-            
             # calculate fitness for all particles
-            population_fitness = self.fitness_function(self.num_particles, self.iteration)
+            population_fitness = self.objectives_function([particle.position for particle in self.particles])
             
             # evaluate fitness and update velocity
             for j, particle in enumerate(self.particles):
@@ -146,13 +149,16 @@ class PSO:
             write_csv('checkpoint/global_state.csv', 
                       [np.concatenate([self.global_best_position, self.global_best_fitness, [self.iteration]])])
         
-        self.get_pareto_front()
+        return self.get_pareto_front_from_history()
 
-    def get_pareto_front(self):
+    def get_pareto_front_from_history(self):
         pareto_front = []
+        
+        # if this is a continued run, only consider the starting iteration onward
         particles = np.concatenate([read_csv('history/iteration' + str(i) + '.csv') 
                                 for i in range(self.iteration - self.num_iterations, self.iteration)])
         
+        # if this is a continued run, take the previous pareto front into account
         if os.path.exists("checkpoint/pareto_front.csv"):
             particles = np.concatenate([particles, read_csv("checkpoint/pareto_front.csv")])
             
@@ -169,17 +175,3 @@ class PSO:
                 
         write_csv('checkpoint/pareto_front.csv', pareto_front)
         return np.array(pareto_front)
-
-    def calculate_crowding_distance(self, pareto_front):
-        crowding_distances = {particle: 0 for particle in pareto_front}
-        for objective_index in range(self.num_objectives):
-            # Sort the Pareto front by the current objective function
-            pareto_front_sorted = sorted(pareto_front, key=lambda x: x.fitness[objective_index])
-            crowding_distances[pareto_front_sorted[0]] = np.inf
-            crowding_distances[pareto_front_sorted[-1]] = np.inf
-            for i in range(1, len(pareto_front_sorted)-1):
-                crowding_distances[pareto_front_sorted[i]] += (
-                    pareto_front_sorted[i+1].fitness[objective_index] -
-                    pareto_front_sorted[i-1].fitness[objective_index]
-                )
-        return crowding_distances
