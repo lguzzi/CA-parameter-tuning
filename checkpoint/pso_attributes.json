@@ -1,22 +1,22 @@
 {
-    "lb": [
+    "lower_bounds": [
         0.0,
         0.0,
         0.0,
         0.0
     ],
-    "ub": [
+    "upper_bounds": [
         0.006,
         0.03,
         0.2,
         1.0
     ],
-    "num_objectives": 2,
+    "num_objectives": 1,
     "num_particles": 200,
     "num_params": 4,
-    "w": 0.5,
-    "c1": 1,
-    "c2": 1,
+    "inertia_weight": 0.5,
+    "cognitive_coefficient": 1,
+    "social_coefficient": 1,
     "max_iter_no_improv": null,
-    "tol": null
+    "optimization_mode": "global"
 }

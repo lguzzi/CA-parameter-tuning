@@ -1,4 +1,4 @@
-from MOPSO import PSO
+from optimizer.mopso import MOPSO
 import subprocess
 from utils import get_metrics, write_csv
 import numpy as np
@@ -9,6 +9,8 @@ import os
 # parsing argument
 parser = argparse.ArgumentParser()
 parser.add_argument("-c", "--continuing", type=int, action="store")
+parser.add_argument("-p", "--num_particles", default=200, type=int, action="store")
+parser.add_argument("-i", "--num_iterations", default=20, type=int, action="store")
 args = parser.parse_args()
 
 # run pixel reconstruction and simple validation
@@ -35,12 +37,14 @@ ub = [0.006, 0.03, 0.2, 1.0] #!!!
         
 # create the PSO object
 if not args.continuing:
-    pso = PSO(objectives_function=reco_and_validate, lb=lb, ub=ub, num_particles=200, num_iterations=25, 
-              num_objectives=2, w=0.5, c1=1, c2=1, max_iter_no_improv=None, tol=None)
+    pso = MOPSO(objective_functions=[reco_and_validate],lower_bounds=lb, upper_bounds=ub, 
+                num_particles=args.num_particles, num_iterations=args.num_iterations, 
+                inertia_weight=0.5, cognitive_coefficient=1, social_coefficient=1, 
+                max_iter_no_improv=None, optimization_mode='global')
 else:
-    pso = PSO(objectives_function=reco_and_validate, lb=lb, ub=ub)
-    pso.load_checkpoint(args.continuing)
+    pso = MOPSO(objective_functions=[reco_and_validate],lower_bounds=lb, upper_bounds=ub, 
+                num_iterations=args.continuing, checkpoint_dir='checkpoint')
 
 # run the optimization algorithm
-pso.optimize()
+pso.optimize(history_dir='history', checkpoint_dir='checkpoint')
 
