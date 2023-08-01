@@ -3,4 +3,4 @@ __pycache__
 *.csv
 /temp
 /history
-/full_validation/plots
+/MTV/plots
