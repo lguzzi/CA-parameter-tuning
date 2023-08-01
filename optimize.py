@@ -9,6 +9,7 @@ import os
 # parsing argument
 parser = argparse.ArgumentParser()
 parser.add_argument("-c", "--continuing", type=int, action="store")
+parser.add_argument("-d", "--default", action="store_true")
 parser.add_argument("-p", "--num_particles", default=200, type=int, action="store")
 parser.add_argument("-i", "--num_iterations", default=20, type=int, action="store")
 args = parser.parse_args()
@@ -27,9 +28,10 @@ def reco_and_validate(params):
     return population_fitness
 
 # get default metrics
-default_params = [[0.0020000000949949026, 0.003000000026077032, 0.15000000596046448, 0.25]]
-default_metrics = reco_and_validate(default_params)
-write_csv("default.csv", [np.concatenate([default_params[0], default_metrics[0]])])
+if args.default:
+    default_params = [[0.0020000000949949026, 0.003000000026077032, 0.15000000596046448, 0.25]]
+    default_metrics = reco_and_validate(default_params)
+    write_csv("default.csv", [np.concatenate([default_params[0], default_metrics[0]])])
 
 # define the lower and upper bounds
 lb = [0.0, 0.0, 0.0, 0.0] #!!!
