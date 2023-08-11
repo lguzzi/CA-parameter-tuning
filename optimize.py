@@ -20,7 +20,7 @@ def reco_and_validate(params):
         os.mkdir("temp")
     write_csv("temp/parameters.csv", params)
     validation_result = "temp/simple_validation.root"
-    subprocess.run(['cmsRun','reconstruction.py', "inputFile=file:input/step2.root", "nEvents=1000",
+    subprocess.run(['cmsRun','reconstruction.py', "inputFile=file:input/step2.root", "nEvents=100",
                      "parametersFile=temp/parameters.csv", "outputFile=" + validation_result])
     num_particles = len(params)
     with uproot.open(validation_result) as uproot_file:

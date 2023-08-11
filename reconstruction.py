@@ -114,8 +114,8 @@ for a in process.aliases: delattr(process, a)
 process.RandomNumberGeneratorService.restoreStateLabel=cms.untracked.string("randomEngineStateProducer")
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '')
-# process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
-# process.FastTimerService.jsonFileName = cms.untracked.string('times.json')
+process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
+process.FastTimerService.jsonFileName = cms.untracked.string('temp/times.json')
 process.TFileService = cms.Service("TFileService", fileName=cms.string(options.outputFile) 
                                    if cms.string(options.outputFile) else "default.root")
 
