@@ -10,7 +10,7 @@ def get_metrics(uproot_file, id):
     total_sim = tree['st'].array()[0]
     
     if not total_ass or not total_rec or not total_sim or not total_ass_sim:
-        return [np.inf] * 2
+        return [1.0] * 2
     
     return [1 - total_ass_sim / total_sim, (total_rec - total_ass + total_dup) / total_rec]
 
@@ -23,4 +23,4 @@ def read_csv(filename):
     
 # write a matrix to a csv file
 def write_csv(filename, matrix):
-    np.savetxt(filename, matrix, delimiter=',')
+    np.savetxt(filename, matrix, fmt='%.18f', delimiter=',')

@@ -10,12 +10,12 @@ with open("selected_params.csv", "r") as f:
                         'CAThetaCutBarrel=' + row[0], 
                         'CAThetaCutForward=' + row[1], 
                         'dcaCutInnerTriplet=' + row[2], 
-                        'dcaCutOuterTriplet=' + row[3], 
+                        'dcaCutOuterTriplet=' + row[3],
+                        'hardCurvCut=' + row[4],
                         'dqmOutput=' + dqm_output])
         hist = "hist" + str(i) + ".root"
         subprocess.run(['harvestTrackValidationPlots.py', dqm_output, '-o', hist])
         plot_cmd.append(hist)
-        
 subprocess.run(plot_cmd)
 
         

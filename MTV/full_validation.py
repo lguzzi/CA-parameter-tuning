@@ -57,6 +57,12 @@ options.register ('dcaCutOuterTriplet',
               VarParsing.varType.float,
               "dcaCutOuterTriplet")
 
+options.register ('hardCurvCut',
+              0.03284072249589491,
+              VarParsing.multiplicity.singleton,
+              VarParsing.varType.float,
+              "hardCurvCut")
+
 options.register ('dqmOutput',
               "dqm_ouput.root",
               VarParsing.multiplicity.singleton,
@@ -69,6 +75,7 @@ process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(options.CAThetaCutBarrel)
 process.pixelTracksCUDA.CAThetaCutForward = cms.double(options.CAThetaCutForward)
 process.pixelTracksCUDA.dcaCutInnerTriplet = cms.double(options.dcaCutInnerTriplet)
 process.pixelTracksCUDA.dcaCutOuterTriplet = cms.double(options.dcaCutOuterTriplet)
+process.pixelTracksCUDA.hardCurvCut = cms.double(options.hardCurvCut)
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1000),

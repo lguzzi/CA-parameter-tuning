@@ -138,7 +138,7 @@ for i, row in enumerate(params):
             earlyFishbone = cms.bool(True),
             fillStatistics = cms.bool(True),
             fitNas4 = cms.bool(False),
-            hardCurvCut = cms.double(0.03284072249589491),
+            hardCurvCut = cms.double(float(row[4])),
             idealConditions = cms.bool(False),
             includeJumpingForwardDoublets = cms.bool(True),
             lateFishbone = cms.bool(False),
