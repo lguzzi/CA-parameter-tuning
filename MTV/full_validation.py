@@ -4,7 +4,7 @@
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
 # with command line options: step3 -s RAW2DIGI:RawToDigi_pixelOnly,RECO:reconstruction_pixelTrackingOnly,VALIDATION:@pixelTrackingOnlyValidation,DQM:@pixelTrackingOnlyDQM --conditions auto:phase1_2022_realistic --datatier GEN-SIM-RECO,DQMIO -n 100 --eventcontent RECOSIM,DQM --geometry DB:Extended --era Run3 --procModifiers pixelNtupletFit,gpu --filein file:step2.root --fileout file:step3.root --nThreads 8
 import FWCore.ParameterSet.Config as cms
-
+import numpy as np
 from Configuration.Eras.Era_Run3_cff import Run3
 from Configuration.ProcessModifiers.pixelNtupletFit_cff import pixelNtupletFit
 from Configuration.ProcessModifiers.gpu_cff import gpu
@@ -33,35 +33,47 @@ from FWCore.ParameterSet.VarParsing import VarParsing
 # VarParsing instance
 options = VarParsing('analysis')
 
-options.register ('CAThetaCutBarrel',
-              0.0020000000949949026,
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "CAThetaCutForward")
+# options.register ('CAThetaCutBarrel',
+#               0.0020000000949949026,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "CAThetaCutForward")
 
-options.register ('CAThetaCutForward',
-              0.003000000026077032,
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "CAThetaCutForward")
+# options.register ('CAThetaCutForward',
+#               0.003000000026077032,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "CAThetaCutForward")
 
-options.register ('dcaCutInnerTriplet',
-              0.15000000596046448,
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "dcaCutInnerTriplet")
+# options.register ('dcaCutInnerTriplet',
+#               0.15000000596046448,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "dcaCutInnerTriplet")
 
-options.register ('dcaCutOuterTriplet',
-              0.25,
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "dcaCutOuterTriplet")
+# options.register ('dcaCutOuterTriplet',
+#               0.25,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "dcaCutOuterTriplet")
 
-options.register ('hardCurvCut',
-              0.03284072249589491,
+# options.register ('hardCurvCut',
+#               0.03284072249589491,
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.float,
+#               "hardCurvCut")
+
+options.register ('parametersFile',
+              "selected_params.csv",
               VarParsing.multiplicity.singleton,
-              VarParsing.varType.float,
-              "hardCurvCut")
+              VarParsing.varType.string,
+              "File containing selected parameters")
+
+options.register ('index',
+                0,
+                VarParsing.multiplicity.singleton,
+                VarParsing.varType.int,
+                "index")
 
 options.register ('dqmOutput',
               "dqm_ouput.root",
@@ -71,11 +83,14 @@ options.register ('dqmOutput',
 
 options.parseArguments()
 
-process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(options.CAThetaCutBarrel)
-process.pixelTracksCUDA.CAThetaCutForward = cms.double(options.CAThetaCutForward)
-process.pixelTracksCUDA.dcaCutInnerTriplet = cms.double(options.dcaCutInnerTriplet)
-process.pixelTracksCUDA.dcaCutOuterTriplet = cms.double(options.dcaCutOuterTriplet)
-process.pixelTracksCUDA.hardCurvCut = cms.double(options.hardCurvCut)
+params = np.genfromtxt(options.parametersFile, delimiter=",", dtype=float)[int(options.index)]
+
+process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(params[0])
+process.pixelTracksCUDA.CAThetaCutForward = cms.double(params[1])
+process.pixelTracksCUDA.dcaCutInnerTriplet = cms.double(params[2])
+process.pixelTracksCUDA.dcaCutOuterTriplet = cms.double(params[3])
+process.pixelTracksCUDA.hardCurvCut = cms.double(params[4])
+process.pixelTracksCUDA.z0Cut = cms.double(params[5])
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1000),

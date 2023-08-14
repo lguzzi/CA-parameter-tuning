@@ -6,3 +6,4 @@ __pycache__
 /MTV/plots
 times.json
 /checkpoint
+/MTV/selected_params.csv
