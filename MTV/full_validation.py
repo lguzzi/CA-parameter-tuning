@@ -84,6 +84,7 @@ options.register ('dqmOutput',
 options.parseArguments()
 
 params = np.genfromtxt(options.parametersFile, delimiter=",", dtype=float)[int(options.index)]
+print(params)
 
 process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(params[0])
 process.pixelTracksCUDA.CAThetaCutForward = cms.double(params[1])
@@ -91,6 +92,12 @@ process.pixelTracksCUDA.dcaCutInnerTriplet = cms.double(params[2])
 process.pixelTracksCUDA.dcaCutOuterTriplet = cms.double(params[3])
 process.pixelTracksCUDA.hardCurvCut = cms.double(params[4])
 process.pixelTracksCUDA.z0Cut = cms.double(params[5])
+process.pixelTracksCUDA.phiCuts = cms.vint32(
+    int(params[6]), int(params[7]), int(params[8]), int(params[9]), int(params[10]),
+    int(params[11]), int(params[12]), int(params[13]), int(params[14]), int(params[15]),
+    int(params[16]), int(params[17]), int(params[18]), int(params[19]), int(params[20]),
+    int(params[21]), int(params[22]), int(params[23]), int(params[24])
+)
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(1000),

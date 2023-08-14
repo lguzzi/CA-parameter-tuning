@@ -7,3 +7,4 @@ __pycache__
 times.json
 /checkpoint
 /MTV/selected_params.csv
+test.py

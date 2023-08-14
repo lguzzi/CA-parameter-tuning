@@ -132,6 +132,12 @@ for i, row in enumerate(params):
             dcaCutOuterTriplet = cms.double(float(row[3])),
             hardCurvCut = cms.double(float(row[4])),
             z0Cut = cms.double(float(row[5])),
+            phiCuts = cms.vint32(
+                int(row[6]), int(row[7]), int(row[8]), int(row[9]), int(row[10]),
+                int(row[11]), int(row[12]), int(row[13]), int(row[14]), int(row[15]),
+                int(row[16]), int(row[17]), int(row[18]), int(row[19]), int(row[20]),
+                int(row[21]), int(row[22]), int(row[23]), int(row[24])
+            ),
             doClusterCut = cms.bool(True),
             doPtCut = cms.bool(True),
             doSharedHitCut = cms.bool(True),
