@@ -6,10 +6,16 @@ import uproot
 import argparse
 import os
 
+phi0p05 = 522
+phi0p06 = 626
+phi0p07 = 730
+phi0p09 = 900
+
 # parsing argument
 parser = argparse.ArgumentParser()
 parser.add_argument("-c", "--continuing", type=int, action="store")
 parser.add_argument("-d", "--default", action="store_true")
+parser.add_argument("-p2", "--phase2", action="store_true")
 parser.add_argument("-p", "--num_particles", default=200, type=int, action="store")
 parser.add_argument("-i", "--num_iterations", default=20, type=int, action="store")
 parser.add_argument("-e", "--num_events", default=100, type=int, action="store")
@@ -21,28 +27,54 @@ def reco_and_validate(params):
         os.mkdir("temp")
     write_csv("temp/parameters.csv", params)
     validation_result = "temp/simple_validation.root"
-    subprocess.run(['cmsRun','reconstruction.py', "inputFile=file:input/step2.root", "nEvents=" + str(args.num_events),
+    subprocess.run(['cmsRun','reconstruction_phase2.py', "inputFile=file:input/phase2_1.root", "nEvents=" + str(args.num_events),
                      "parametersFile=temp/parameters.csv", "outputFile=" + validation_result])
     num_particles = len(params)
     with uproot.open(validation_result) as uproot_file:
         population_fitness = np.array([get_metrics(uproot_file, i) for i in range(num_particles)])
     return population_fitness
 
+# phase2 = True
+
 # get default metrics
 if args.default:
-    default_params = [[0.0020000000949949026, 0.003000000026077032, 0.15000000596046448, 0.25, 0.03284072249589491, 12.0,
-                       522, 730, 730, 522, 626, 626, 522, 522, 626, 626, 626, 522, 522, 522, 522, 522, 522, 522, 522]]
+    if args.phase2:
+        default_params = [[0.0020000000949949026, 0.003000000026077032, 0.15000000596046448, 0.25, 0.03284072249589491, 7.5,
+                           phi0p05, phi0p05, phi0p05, phi0p06, phi0p07, phi0p07, phi0p06, phi0p07, phi0p07, phi0p05, phi0p05,
+                           phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05,
+                           phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p07, phi0p07, phi0p07, phi0p07,
+                           phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07,
+                           phi0p07, phi0p07, phi0p07, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05]]
+    else:
+        default_params = [[0.0020000000949949026, 0.003000000026077032, 0.15000000596046448, 0.25, 0.03284072249589491, 12.0,
+                           522, 730, 730, 522, 626, 626, 522, 522, 626, 626, 626, 522, 522, 522, 522, 522, 522, 522, 522]]
+        
     default_metrics = reco_and_validate(default_params)
     write_csv("temp/default.csv", [np.concatenate([default_params[0], default_metrics[0]])])
 
 # define the lower and upper bounds
-lb = [0.0, 0.0, 0.0, 0.0, 1.0 / 3.8 / 0.9, 5.0, 400, 
-      400, 400, 400, 400, 400, 400, 400, 400, 400, 
-      400, 400, 400, 400, 400, 400, 400, 400, 400]
+if args.phase2:
+    lb = [0.0, 0.0, 0.0, 0.0, 1.0 / 3.8 / 0.9, 5.0,
+          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 
+          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
+          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
+          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
+          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400]
 
-ub = [0.006, 0.03, 0.2, 1.0, 1.0 / 3.8 / 0.3, 20.0, 1000,
-      1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 
-      1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
+    ub = [0.006, 0.03, 0.2, 1.0, 1.0 / 3.8 / 0.3, 20.0,
+          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
+          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
+          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
+          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
+          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
+else:
+    lb = [0.0, 0.0, 0.0, 0.0, 1.0 / 3.8 / 0.9, 5.0, 400, 
+          400, 400, 400, 400, 400, 400, 400, 400, 400, 
+          400, 400, 400, 400, 400, 400, 400, 400, 400]
+
+    ub = [0.006, 0.03, 0.2, 1.0, 1.0 / 3.8 / 0.3, 20.0, 1000,
+          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 
+          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
         
 # create the PSO object
 if not args.continuing:

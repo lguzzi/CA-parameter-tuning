@@ -8,5 +8,5 @@ times.json
 /checkpoint
 /MTV/selected_params.csv
 test.py
-dump.py
+*dump.py
 log.txt
