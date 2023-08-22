@@ -27,7 +27,7 @@ def reco_and_validate(params):
         os.mkdir("temp")
     write_csv("temp/parameters.csv", params)
     validation_result = "temp/simple_validation.root"
-    subprocess.run(['cmsRun','reconstruction_phase2.py', "inputFile=file:input/phase2_1.root", "nEvents=" + str(args.num_events),
+    subprocess.run(['cmsRun','reconstruction_phase2.py', "inputFiles=file:input/phase2_0.root", "nEvents=" + str(args.num_events),
                      "parametersFile=temp/parameters.csv", "outputFile=" + validation_result])
     num_particles = len(params)
     with uproot.open(validation_result) as uproot_file:
@@ -39,12 +39,12 @@ def reco_and_validate(params):
 # get default metrics
 if args.default:
     if args.phase2:
-        default_params = [[0.0020000000949949026, 0.003000000026077032, 0.15000000596046448, 0.25, 0.03284072249589491, 7.5,
-                           phi0p05, phi0p05, phi0p05, phi0p06, phi0p07, phi0p07, phi0p06, phi0p07, phi0p07, phi0p05, phi0p05,
-                           phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05,
-                           phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p07, phi0p07, phi0p07, phi0p07,
-                           phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07,
-                           phi0p07, phi0p07, phi0p07, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05]]
+        default_params = [[0.0020000000949949026, 0.003000000026077032, 0.15000000596046448, 0.25, 0.03284072249589491, 7.5]]
+                        #    phi0p05, phi0p05, phi0p05, phi0p06, phi0p07, phi0p07, phi0p06, phi0p07, phi0p07, phi0p05, phi0p05,
+                        #    phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05,
+                        #    phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p07, phi0p07, phi0p07, phi0p07,
+                        #    phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07, phi0p07,
+                        #    phi0p07, phi0p07, phi0p07, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05]]
     else:
         default_params = [[0.0020000000949949026, 0.003000000026077032, 0.15000000596046448, 0.25, 0.03284072249589491, 12.0,
                            522, 730, 730, 522, 626, 626, 522, 522, 626, 626, 626, 522, 522, 522, 522, 522, 522, 522, 522]]
@@ -54,19 +54,19 @@ if args.default:
 
 # define the lower and upper bounds
 if args.phase2:
-    lb = [0.0, 0.0, 0.0, 0.0, 1.0 / 3.8 / 0.9, 5.0,
-          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 
-          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
-          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
-          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
-          400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400]
+    lb = [0.0, 0.0, 0.0, 0.0, 1.0 / 3.8 / 0.9, 5.0]
+        #   400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 
+        #   400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
+        #   400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
+        #   400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400,
+        #   400, 400, 400, 400, 400, 400, 400, 400, 400, 400, 400]
 
-    ub = [0.006, 0.03, 0.2, 1.0, 1.0 / 3.8 / 0.3, 20.0,
-          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
-          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
-          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
-          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
-          1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
+    ub = [0.006, 0.03, 0.2, 1.0, 1.0 / 3.8 / 0.3, 20.0]
+        #   1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
+        #   1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
+        #   1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
+        #   1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000,
+        #   1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000]
 else:
     lb = [0.0, 0.0, 0.0, 0.0, 1.0 / 3.8 / 0.9, 5.0, 400, 
           400, 400, 400, 400, 400, 400, 400, 400, 400, 
@@ -80,7 +80,7 @@ else:
 if not args.continuing:
     os.system("rm history/*")
     pso = MOPSO(objective_functions=[reco_and_validate],lower_bounds=lb, upper_bounds=ub, 
-                num_particles=args.num_particles, num_iterations=args.num_iterations, 
+                num_objectives=2, num_particles=args.num_particles, num_iterations=args.num_iterations, 
                 inertia_weight=0.5, cognitive_coefficient=1, social_coefficient=1, 
                 max_iter_no_improv=None, optimization_mode='global')
 else:
