@@ -18,22 +18,22 @@ options = VarParsing('analysis')
 
 # Custom options
 options.register('parametersFile',
-              "default/default_params.csv",
+              'default/default_params.csv',
               VarParsing.multiplicity.singleton,
               VarParsing.varType.string,
-              "Name of parameters file")
+              'Name of parameters file')
 
 options.register('nEvents',
               100,
               VarParsing.multiplicity.singleton,
               VarParsing.varType.int,
-              "Number of events")
+              'Number of events')
 
-options.register('inputFile',
-              "file:input/step2.root",
-              VarParsing.multiplicity.singleton,
-              VarParsing.varType.string,
-              "Name of input file")
+# options.register('inputFile',
+#               'file:input/step2.root',
+#               VarParsing.multiplicity.singleton,
+#               VarParsing.varType.string,
+#               'Name of input file')
 
 options.parseArguments()
 
@@ -51,7 +51,7 @@ process.load('Configuration.StandardSequences.RawToDigi_cff')
 process.load('Configuration.StandardSequences.Reconstruction_cff')
 process.load('Configuration.StandardSequences.Validation_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
-process.load( "HLTrigger.Timer.FastTimerService_cfi" )
+process.load( 'HLTrigger.Timer.FastTimerService_cfi' )
 
 process.maxEvents = cms.untracked.PSet(
     input = cms.untracked.int32(options.nEvents),
@@ -59,8 +59,8 @@ process.maxEvents = cms.untracked.PSet(
 )
 
 # Input source
-process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring(options.inputFile),
+process.source = cms.Source('PoolSource',
+    fileNames = cms.untracked.vstring(options.inputFiles),
     secondaryFileNames = cms.untracked.vstring()
 )
 
@@ -111,13 +111,13 @@ process.configurationMetadata = cms.untracked.PSet(
 process.mix.playback = True
 process.mix.digitizers = cms.PSet()
 for a in process.aliases: delattr(process, a)
-process.RandomNumberGeneratorService.restoreStateLabel=cms.untracked.string("randomEngineStateProducer")
+process.RandomNumberGeneratorService.restoreStateLabel=cms.untracked.string('randomEngineStateProducer')
 from Configuration.AlCa.GlobalTag import GlobalTag
 process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:phase1_2022_realistic', '')
 process.FastTimerService.writeJSONSummary = cms.untracked.bool(True)
 process.FastTimerService.jsonFileName = cms.untracked.string('temp/times.json')
-process.TFileService = cms.Service("TFileService", fileName=cms.string(options.outputFile) 
-                                   if cms.string(options.outputFile) else "default.root")
+process.TFileService = cms.Service('TFileService', fileName=cms.string(options.outputFile) 
+                                   if cms.string(options.outputFile) else 'default.root')
 
 
 # Create multiple reconstruction and validation objects with parameters in parameters.csv
@@ -125,7 +125,7 @@ process.TFileService = cms.Service("TFileService", fileName=cms.string(options.o
 params = read_csv(options.parametersFile)
 totalTasks = len(params)
 for i, row in enumerate(params):
-    setattr(process, 'pixelTracksCUDA' + str(i), cms.EDProducer("CAHitNtupletCUDAPhase1",
+    setattr(process, 'pixelTracksCUDA' + str(i), cms.EDProducer('CAHitNtupletCUDAPhase1',
             CAThetaCutBarrel = cms.double(float(row[0])),
             CAThetaCutForward = cms.double(float(row[1])),
             dcaCutInnerTriplet = cms.double(float(row[2])),
@@ -154,7 +154,7 @@ for i, row in enumerate(params):
             minHitsForSharingCut = cms.uint32(10),
             minHitsPerNtuplet = cms.uint32(4),
             onGPU = cms.bool(True),
-            pixelRecHitSrc = cms.InputTag("siPixelRecHitsPreSplittingCUDA"),
+            pixelRecHitSrc = cms.InputTag('siPixelRecHitsPreSplittingCUDA'),
             ptCut = cms.double(0.5),
             ptmin = cms.double(0.8999999761581421),
             trackQualityCuts = cms.PSet(
@@ -172,20 +172,20 @@ for i, row in enumerate(params):
             useSimpleTripletCleaner = cms.bool(True)
         )
     )
-    setattr(process, "pixelTracksSoA" + str(i), cms.EDProducer("PixelTrackSoAFromCUDAPhase1",
+    setattr(process, 'pixelTracksSoA' + str(i), cms.EDProducer('PixelTrackSoAFromCUDAPhase1',
             mightGet = cms.optional.untracked.vstring,
-            src = cms.InputTag("pixelTracksCUDA" + str(i)))
+            src = cms.InputTag('pixelTracksCUDA' + str(i)))
     )
-    setattr(process, "pixelTracks" + str(i), cms.EDProducer("PixelTrackProducerFromSoAPhase1",
-            beamSpot = cms.InputTag("offlineBeamSpot"),
+    setattr(process, 'pixelTracks' + str(i), cms.EDProducer('PixelTrackProducerFromSoAPhase1',
+            beamSpot = cms.InputTag('offlineBeamSpot'),
             mightGet = cms.optional.untracked.vstring,
             minNumberOfHits = cms.int32(0),
             minQuality = cms.string('loose'),
-            pixelRecHitLegacySrc = cms.InputTag("siPixelRecHitsPreSplitting"),
-            trackSrc = cms.InputTag("pixelTracksSoA" + str(i))
+            pixelRecHitLegacySrc = cms.InputTag('siPixelRecHitsPreSplitting'),
+            trackSrc = cms.InputTag('pixelTracksSoA' + str(i))
         )
     )
-    setattr(process, "simpleValidation" + str(i), cms.EDAnalyzer("SimpleValidation",
+    setattr(process, 'simpleValidation' + str(i), cms.EDAnalyzer('SimpleValidation',
             chargedOnlyTP = cms.bool(True),
             intimeOnlyTP = cms.bool(False),
             invertRapidityCutTP = cms.bool(False),
@@ -201,27 +201,27 @@ for i, row in enumerate(params):
             signalOnlyTP = cms.bool(True),
             stableOnlyTP = cms.bool(False),
             tipTP = cms.double(3.5),
-            trackLabels = cms.VInputTag("pixelTracks" + str(i)),
-            trackAssociator = cms.untracked.InputTag("quickTrackAssociatorByHits"),
-            trackingParticles = cms.InputTag("mix", "MergedTrackTruth")               
+            trackLabels = cms.VInputTag('pixelTracks' + str(i)),
+            trackAssociator = cms.untracked.InputTag('quickTrackAssociatorByHits'),
+            trackingParticles = cms.InputTag('mix', 'MergedTrackTruth')               
         )
     )
 
 # Prevalidation
-process.tpClusterProducer = cms.EDProducer("ClusterTPAssociationProducer",
+process.tpClusterProducer = cms.EDProducer('ClusterTPAssociationProducer',
     mightGet = cms.optional.untracked.vstring,
-    phase2OTClusterSrc = cms.InputTag("siPhase2Clusters"),
-    phase2OTSimLinkSrc = cms.InputTag("simSiPixelDigis","Tracker"),
-    pixelClusterSrc = cms.InputTag("siPixelClustersPreSplitting"),
-    pixelSimLinkSrc = cms.InputTag("simSiPixelDigis"),
-    simTrackSrc = cms.InputTag("g4SimHits"),
-    stripClusterSrc = cms.InputTag("hltSiStripRawToClustersFacility"),
-    stripSimLinkSrc = cms.InputTag("simSiStripDigis"),
+    phase2OTClusterSrc = cms.InputTag('siPhase2Clusters'),
+    phase2OTSimLinkSrc = cms.InputTag('simSiPixelDigis','Tracker'),
+    pixelClusterSrc = cms.InputTag('siPixelClustersPreSplitting'),
+    pixelSimLinkSrc = cms.InputTag('simSiPixelDigis'),
+    simTrackSrc = cms.InputTag('g4SimHits'),
+    stripClusterSrc = cms.InputTag('hltSiStripRawToClustersFacility'),
+    stripSimLinkSrc = cms.InputTag('simSiStripDigis'),
     throwOnMissingCollections = cms.bool(True),
-    trackingParticleSrc = cms.InputTag("mix","MergedTrackTruth")
+    trackingParticleSrc = cms.InputTag('mix','MergedTrackTruth')
 )
 
-process.quickTrackAssociatorByHits = cms.EDProducer("QuickTrackAssociatorByHitsProducer",
+process.quickTrackAssociatorByHits = cms.EDProducer('QuickTrackAssociatorByHitsProducer',
     AbsoluteNumberOfHits = cms.bool(False),
     Cut_RecoToSim = cms.double(0.75),
     PixelHitWeight = cms.double(1.0),
@@ -229,7 +229,7 @@ process.quickTrackAssociatorByHits = cms.EDProducer("QuickTrackAssociatorByHitsP
     Quality_SimToReco = cms.double(0.5),
     SimToRecoDenominator = cms.string('reco'),
     ThreeHitTracksAreSpecial = cms.bool(True),
-    cluster2TPSrc = cms.InputTag("tpClusterProducer"),
+    cluster2TPSrc = cms.InputTag('tpClusterProducer'),
     useClusterTPAssociation = cms.bool(True)
 )
 
@@ -244,7 +244,7 @@ process.pixelTracksTask = cms.Task(*taskListCUDA, *taskListSoA, *taskList)
 process.pixelTracksSeq = cms.Sequence(process.pixelTracksTask)
 process.preValidation = cms.Sequence(process.tpClusterProducer + process.quickTrackAssociatorByHits)
 process.simpleValSeq = cms.Sequence(sum(taskListVal[1:],taskListVal[0]))
-process.consumer = cms.EDAnalyzer("GenericConsumer", eventProducts = cms.untracked.vstring("tracksValidation"))
+process.consumer = cms.EDAnalyzer('GenericConsumer', eventProducts = cms.untracked.vstring('tracksValidation'))
 
 
 # Path and EndPath definitions
