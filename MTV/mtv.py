@@ -33,36 +33,6 @@ from FWCore.ParameterSet.VarParsing import VarParsing
 # VarParsing instance
 options = VarParsing('analysis')
 
-# options.register ('CAThetaCutBarrel',
-#               0.0020000000949949026,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "CAThetaCutForward")
-
-# options.register ('CAThetaCutForward',
-#               0.003000000026077032,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "CAThetaCutForward")
-
-# options.register ('dcaCutInnerTriplet',
-#               0.15000000596046448,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "dcaCutInnerTriplet")
-
-# options.register ('dcaCutOuterTriplet',
-#               0.25,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "dcaCutOuterTriplet")
-
-# options.register ('hardCurvCut',
-#               0.03284072249589491,
-#               VarParsing.multiplicity.singleton,
-#               VarParsing.varType.float,
-#               "hardCurvCut")
-
 options.register ('parametersFile',
               "selected_params.csv",
               VarParsing.multiplicity.singleton,
@@ -84,7 +54,6 @@ options.register ('dqmOutput',
 options.parseArguments()
 
 params = np.genfromtxt(options.parametersFile, delimiter=",", dtype=float)[int(options.index)]
-print(params)
 
 process.pixelTracksCUDA.CAThetaCutBarrel = cms.double(params[0])
 process.pixelTracksCUDA.CAThetaCutForward = cms.double(params[1])

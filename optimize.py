@@ -56,7 +56,8 @@ def reco_and_validate(params):
                      'parametersFile=temp/parameters.csv', 'outputFile=' + validation_result])
     num_particles = len(params)
     with uproot.open(validation_result) as uproot_file:
-        population_fitness = np.array([get_metrics(uproot_file, i) for i in range(num_particles)])
+        population_fitness = [get_metrics(uproot_file, i) for i in range(num_particles)]
+    write_csv('temp/metrics.csv', population_fitness)
     return population_fitness
 
 phi0p05 = 522

@@ -171,7 +171,7 @@ for i, row in enumerate(params):
             maxNumberOfDoublets = cms.uint32(2621440),
             mightGet = cms.optional.untracked.vstring,
             minHitsForSharingCut = cms.uint32(10),
-            minHitsPerNtuplet = cms.uint32(3),
+            minHitsPerNtuplet = cms.uint32(4),
             onGPU = cms.bool(True),
             pixelRecHitSrc = cms.InputTag('siPixelRecHitsPreSplittingCUDA'),
             ptCut = cms.double(0.8500000238418579),
@@ -284,7 +284,7 @@ from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
 associatePatAlgosToolsTask(process)
 
 #Setup FWK for multithreaded
-process.options.numberOfThreads = 8
+process.options.numberOfThreads = 1
 process.options.numberOfStreams = 0
 
 # customisation of the process.
