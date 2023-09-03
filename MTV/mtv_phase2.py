@@ -162,6 +162,8 @@ from PhysicsTools.PatAlgos.tools.helpers import associatePatAlgosToolsTask
 associatePatAlgosToolsTask(process)
 
 # customisation of the process.
+process.options.numberOfThreads = 10
+process.options.numberOfStreams = 0
 
 # Automatic addition of the customisation function from SimGeneral.MixingModule.fullMixCustomize_cff
 from SimGeneral.MixingModule.fullMixCustomize_cff import setCrossingFrameOn 
