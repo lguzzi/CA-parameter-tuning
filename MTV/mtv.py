@@ -34,7 +34,7 @@ from FWCore.ParameterSet.VarParsing import VarParsing
 options = VarParsing('analysis')
 
 options.register ('parametersFile',
-              "selected_params.csv",
+              "../checkpoint/selected_params.csv",
               VarParsing.multiplicity.singleton,
               VarParsing.varType.string,
               "File containing selected parameters")

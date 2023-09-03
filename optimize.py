@@ -79,7 +79,7 @@ if args.default:
                            phi0p06, phi0p06, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05, phi0p05]]
         
     default_metrics = reco_and_validate(default_params)
-    write_csv('temp/default.csv', [np.concatenate([default_params[0], default_metrics[0]])])
+    write_csv('checkpoint/default.csv', [np.concatenate([default_params[0], default_metrics[0]])])
 
         
 # create the PSO object
