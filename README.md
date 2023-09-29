@@ -28,7 +28,7 @@ Clone the repo:
 git clone https://github.com/cms-pixel-autotuning/CA-parameter-tuning.git
 cd CA-parameter-tuning
 ```
-For Phase 1, there is a script inside the `input` folder that generates the ttbar events used in our optimization. Simply run
+For Phase-1, there is a script inside the `input` folder that generates the ttbar events used in our optimization. Simply run
 ```
 cd input
 . generate_input
@@ -42,3 +42,9 @@ You can run the whole thing with `python optimize.py` and the following options:
 - `-i [int]`: number of iterations to run
 - `-p [int]`: number of particles to be spawned
 - `-c [int]`: continue for a number of iterations (a `checkpoint` folder from a previous run is required)
+## Results:
+### `checkpoint` folder
+- `pareto_front.csv`: the non-dominated solutions across all iterations. Each row corresponds to a particle on the pareto front. The **last** two columns are `1 - efficiency` and `fake rate`, and the rest are the cuts (see [Phase-1 config](https://github.com/cms-pixel-autotuning/CA-parameter-tuning/blob/main/reconstruction.py#L129) or [Phase-2 config](https://github.com/cms-pixel-autotuning/CA-parameter-tuning/blob/main/reconstruction_phase2.py#L132) to know exactly which cut each column corresponds to)
+- `default.csv`: onlt one row containing the default cuts and their corresponding `1 - efficiency` and `fake rate`. The columns are the same as in `pareto_front.csv`
+- `individual_states.csv`:
+
