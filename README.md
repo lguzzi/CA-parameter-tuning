@@ -16,7 +16,7 @@ conda create -n [env-name] -c conda-forge -y python=3.9 jupyter numpy pandas mat
 conda activate [env-name]
 ```
 ### Installing The-Optimizer package
-The package can be cloned anywhere, but your conda environment must be active during installation.
+The package can be cloned anywhere, but your conda environment must be active during installation
 ```
 git clone https://github.com/cms-patatrack/The-Optimizer.git
 git checkout pixel-autotuning
@@ -33,7 +33,7 @@ For Phase-1, there is a script inside the `input` folder that generates the ttba
 cd input
 . generate_input
 ```
-For other workflows and Phase-2, copy the file(s) produced in step 2 of the workflow to the `input` folder.
+For other workflows and Phase-2, copy the `root` file(s) produced in step 2 of the workflow to the `input` folder.
 ## Running Multi-Objective Particle Swarm Optimization (MOPSO)
 You can run the whole thing with `python optimize.py` and the following options:
 - `-p2`: run the optimization with Phase-2 configuration (Phase-2 input is required)
