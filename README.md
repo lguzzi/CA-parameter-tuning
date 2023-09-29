@@ -44,7 +44,7 @@ You can run the whole thing with `python optimize.py` and the following options:
 - `-c [int]`: continue for a number of iterations (a `checkpoint` folder from a previous run is required)
 ## Results:
 ### The `checkpoint` folder
-This folder contain all the information needed to continue a run. The pareto front, which is what we're looking for, is also included.
+This folder contains all the information needed to continue a run. The pareto front, which is what we're looking for, is also included.
 - `pareto_front.csv`: the non-dominated solutions across all iterations. Each row corresponds to a particle on the pareto front. The **last** two columns are `1 - efficiency` and `fake rate`, while the rest are the cuts (see [Phase-1 config](https://github.com/cms-pixel-autotuning/CA-parameter-tuning/blob/main/reconstruction.py#L129) or [Phase-2 config](https://github.com/cms-pixel-autotuning/CA-parameter-tuning/blob/main/reconstruction_phase2.py#L132) to know exactly which cut each column corresponds to)
 - `default.csv`: one row containing the default cuts and the corresponding `1 - efficiency` and `fake rate`. The columns are the same as in `pareto_front.csv`
 - `individual_states.csv`: the current state of the particles. Each row corresponds to one particle, with the columns being its position, velocity, best position, and best fitness
