@@ -28,10 +28,17 @@ Clone the repo:
 git clone https://github.com/cms-pixel-autotuning/CA-parameter-tuning.git
 cd CA-parameter-tuning
 ```
-For Phase 1, there is a script inside the `input` folder that generates ttbar events used in our optimization. Simply run
+For Phase 1, there is a script inside the `input` folder that generates the ttbar events used in our optimization. Simply run
 ```
 cd input
 . generate_input
 ```
-For other workflows and Phase 2, copy the file(s) produced in step 2 of the workflow to the `input` folder.
-
+For other workflows and Phase-2, copy the file(s) produced in step 2 of the workflow to the `input` folder.
+## Running Multi-Objective Particle Swarm Optimization (MOPSO)
+You can run the whole thing with `python optimize.py` and the following options:
+- `-p2`: run the optimization with Phase-2 configuration (Phase-2 input is required)
+- `-d`: calculate efficiency and fake rate corresponding to the default cuts that are currently set in CMSSW
+- `-e [int]`: number of events to process (<=1000)
+- `-i [int]`: number of iterations to run
+- `-p [int]`: number of particles to be spawned
+- `-c [int]`: continue for a number of iterations (a `checkpoint` folder from a previous run is required)
