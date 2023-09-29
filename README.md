@@ -54,7 +54,18 @@ This folder contains the position (cuts) and fitness (`1 - efficiency` and `fake
 ## Visualizing and validating the results
 ### Plotting optimization history and pareto front
 Using `plotting.ipynb`, you can view how the swarm progresses and the final pareto front
+![history](https://raw.githubusercontent.com/cms-pixel-autotuning/optimization-results/main/phase1_1000_events/checkpoint/metrics.gif)
+![pf](https://raw.githubusercontent.com/cms-pixel-autotuning/optimization-results/main/phase1_1000_events/checkpoint/pf.png)
 
-### Validating the results with `MultiTrackValidator` (MTV)
-To validate the results, you can also manually choose 3 points on the pareto front using the same notebook and run `MultiTrackValidator` with the corresponding cuts.
+### Validating the results with `MultiTrackValidator (MTV)`
+First, manually select 3 points on the pareto_front using `plotting.ipynb`. After you run the last cell, a file named `selected_params.csv` will be created in the `checkpoint` folder. The first row on the file corresponds to the default cuts, while the other 3 are the points you picked. The columns are the same as in `pareto_front.csv`, minus the last two (only the cuts are present).
+
+To run `MTV`,
+```
+cd MTV
+python make_plots.py   # add '-p2' for Phase-2 results
+```
+
+
+
 
