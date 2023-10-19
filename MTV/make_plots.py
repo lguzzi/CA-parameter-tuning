@@ -21,7 +21,7 @@ for i in range(4):
     if i == 0:
         hist = 'default.root'
     else:
-        hist = 'hist' + str(i) + '.root'
+        hist = 'sample' + str(i) + '.root'
     subprocess.run(['harvestTrackValidationPlots.py', dqm_output, '-o', hist])
     plot_cmd.append(hist)
 subprocess.run(plot_cmd)
