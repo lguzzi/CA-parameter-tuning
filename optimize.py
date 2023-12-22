@@ -1,4 +1,5 @@
 from optimizer.mopso import MOPSO
+from optimizer.objective import Objective
 import subprocess
 from utils import get_metrics, write_csv
 import numpy as np
@@ -59,6 +60,8 @@ def reco_and_validate(params):
         population_fitness = [get_metrics(uproot_file, i) for i in range(num_particles)]
     return population_fitness
 
+objective = Objective(objective_functions = [reco_and_validate], num_objectives = 2)
+
 phi0p05 = 522
 phi0p06 = 626
 phi0p07 = 730
@@ -85,14 +88,13 @@ if args.default:
 # create the PSO object
 if not args.continuing:
     os.system('rm history/*')
-    pso = MOPSO(objective_functions=[reco_and_validate],lower_bounds=lb, upper_bounds=ub, 
-                num_objectives=2, num_particles=args.num_particles, num_iterations=args.num_iterations, 
-                inertia_weight=0.5, cognitive_coefficient=1, social_coefficient=1, 
-                max_iter_no_improv=None, optimization_mode='global')
+    pso = MOPSO(objective=objective,lower_bounds=lb, upper_bounds=ub, 
+                num_particles=args.num_particles, 
+                inertia_weight=0.5, cognitive_coefficient=1, social_coefficient=1, )
 else:
-    pso = MOPSO(objective_functions=[reco_and_validate],lower_bounds=lb, upper_bounds=ub, 
+    pso = MOPSO(objective=objective,lower_bounds=lb, upper_bounds=ub, 
                 num_iterations=args.continuing, checkpoint_dir='checkpoint')
 
 # run the optimization algorithm
-pso.optimize(history_dir='history', checkpoint_dir='checkpoint')
+pso.optimize(max_iter_no_improv=None, num_iterations=args.num_iterations)
 
